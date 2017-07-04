@@ -29,9 +29,11 @@
     <body>
 
 <div class="container-fluid">
-   <div class="row">
-       <div class="text-center" style="background: pink;height: 80px;line-height: 80px">
-       <h1 style="margin: 0;line-height: 80px;color: #fff">Cadastro de Produtos</h1>
+   <div class="row" style="background: pink">
+       <div col class="col-md-offset-2 col-md-8 text-center" style="background: pink;height: 80px;line-height: 80px">
+       
+       <div style="background-image: url('img/logo_pq.png');background-repeat: no-repeat;"><h1 style="margin: 0;line-height: 80px;color: #fff">Cadastro de Produtos</h1></div>
+       
        </div>
    </div>
 <br><br>
@@ -53,57 +55,30 @@
                   <input type="text" class="form-control"  id="nome" name="nome" placeholder="" required>
           </div>
 
-          <div class="form-group col-md-4">
-              <label for="telefone">Telefone:</label>
-              <input type="text" class="form-control" id="telefone" name="nome" placeholder="" required="">
-          </div>
-
-          <div class="form-group col-md-4">
-              <label for="cpf">CPF:</label>
-              <input type="text" class="form-control" id="cpf" name="cpf" placeholder="" required="">
-          </div>
-
-
-          <div class="form-group col-md-4">
-              <label for="aniversario">Aniversário:</label>
-              <input type="text" class="form-control" id="aniversario" name="aniversario" placeholder="" required="">
-          </div>
-
-          <div class="form-group col-md-9">
-              <label for="email">Email:</label>
-              <input type="text" class="form-control" id="email" name="email" placeholder="" required="">
-          </div>
-
-          <div class="form-group col-md-3">
-                <label for="equipe">Sexo:</label>
-                <select class="form-control" name="sexo" id="sexo" required>
-                    <option value="feminino">Feminino</option>
-                    <option value="masculino">Masculino</option>
-                    <option value="outro">Outro</option>
-                </select>
-            </div>
-
           <div class="form-group col-md-12">
-              <label for="endereco">Endereço:</label>
-              <input type="text" class="form-control" id="endereco" name="endereco" placeholder="" required="">
+              <label for="descricao">Descrição:</label>
+              <textarea rows="4" cols="50" class="form-control" id="descricao" name="descricao" placeholder="" required=""></textarea>
+          </div>
+          
+          <div class="form-group col-md-4">
+              <label for="p_custo">Preço de Custo:</label>
+              <input type="text" class="form-control" id="p_custo" name="p_custo" placeholder="R$ " required="">
           </div>
 
-          <div class="form-group col-md-5">
-              <label for="bairro">Bairro:</label>
-              <input type="text" class="form-control" id="bairro" name="bairro" placeholder="" required="">
+
+          <div class="form-group col-md-4">
+              <label for="p_venda">Preco  de Venda:</label>
+              <input type="text" class="form-control" id="p_venda" name="p_venda" placeholder="R$ " required="">
           </div>
 
-          <div class="form-group col-md-5">
-              <label for="cidade">Cidade:</label>
-              <input type="text" class="form-control" id="cidade" name="cidade" placeholder="" required="">
+          <div class="form-group col-md-4">
+              <label for="estoque">Estoque:</label>
+              <input type="text" class="form-control" id="estoque" name="estoque" placeholder="" required="">
           </div>
 
-          <div class="form-group col-md-2">
-              <label for="estado">Estado:</label>
-              <input type="text" class="form-control" id="estado" name="estado" placeholder="" required="">
-          </div><br>
+          
           <div class="form-group">
-                 <input style="background: pink" type="submit" name="submit" class="btn btn-block" value="Salvar" >
+                 <input style="background: pink; color: #fff" type="submit" name="submit" class="btn btn-block" value="Salvar" >
               
           </div>
       </form>
@@ -123,15 +98,6 @@
 
 
 </div> 
-
-<!--Código JavaScript  -->       
-<script>
-    jQuery(function($){
-    $("#aniversario").mask("99/99/9999");
-    $("#cpf").mask("999.999.999-99");
-    $("#telefone").mask("(99) 99999-9999");
-    });
-</script>    
-      
-    </body>
+    
+</body>
 </html>

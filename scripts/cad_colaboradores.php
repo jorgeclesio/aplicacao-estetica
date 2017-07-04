@@ -15,8 +15,9 @@ $bairro      = $_POST['bairro'];
 $cidade      = $_POST['cidade'];
 $estado      = $_POST['estado'];
 
-	$sql = "INSERT INTO colaboradores (nome,telefone,cpf,aniversario,email,sexo,endereco,bairro,cidade,estado) VALUES ('$nome','$telefone','$cpf','$aniversario','$email','$sexo','$endereco','$bairro','$cidade','$estado')";
-	mysqli_query ($conexao,$sql) or die("Erro");
+	consulta_banco("INSERT INTO colaboradores (nome,telefone,cpf,aniversario,email,sexo,endereco,bairro,cidade,estado) 
+		VALUES ('$nome','$telefone','$cpf','$aniversario','$email','$sexo','$endereco','$bairro','$cidade','$estado')") or die("erro ao inserir");
+
 
 	  echo "<script> alert('Cadastro realizado');</script>";
       echo "<SCRIPT> location.href='../index.php' </SCRIPT>"; 

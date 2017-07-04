@@ -72,7 +72,7 @@
                 </a>
             </div>
 
-            <br><br><br><br>
+            <br><br><br>
             <div class="col-md-12">
                <p>Filtrar Período:</p> 
             </div>
@@ -93,8 +93,8 @@
                     <button class="btn" type="submit" name="buscar" value="Buscar">Buscar</button>
                 
             </form>
-                
-                <table class="table table-responsive table-striped table-bordered" style="margin-top: 1px">
+             <br>   
+      <table class="table table-responsive table-striped table-bordered" style="margin-top: 1px">
         <tr class="text-center" style="background: pink;color:gray;">
             <td>Num Comanda</td>
             <td>Data</td>

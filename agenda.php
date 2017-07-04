@@ -9,6 +9,7 @@
 <link href='css/fullcalendar.print.min.css' rel='stylesheet' media='print' />
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <link href="js/jquery-ui.min.css" rel="stylesheet">
+<link href="css/jquery-ui.min.css" rel="stylesheet">
 
 <script src="js/jquery-3.2.1.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
@@ -54,11 +55,15 @@
 		   //alert(calEvent.id);
 		   		$('#idDoEvento').val(calEvent.id);
 		   		$('#nomeDoEvento').val(calEvent.title);
-	   		
+	   			
+	   			//pega o id quando clica no evento
+	   			$('#pegaId').val(calEvent.id);
+
 	   			
 		},
-        theme:true,
-        TitleFormat:'D MMM YYYY',
+		
+        theme:true,  //para fundo do calendario transparente
+        TitleFormat:'D MMMM YYYY',
         
 		events: function(start, end, timezone, callback) {
 		    $.ajax({
@@ -104,7 +109,8 @@
 		ForceEventDuration:true,
 		DefaultTimedEventDuration:'01:00:00',
 		defaultView: 'agendaWeek',
-		editable:true,
+		editable:false,
+		
 		monthNames: ["Janeiro","Fevereiro","Março","Abril","Maio","Junho","Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro" ],	
 			
 		monthNamesShort: ["Jan","Fev","Mar","Abr","Mai","Jun","Jul", "Ago", "Set", "Out", "Nov", "Dez" ],
@@ -126,11 +132,11 @@
 		padding: 0;
 		font-family: "Lucida Grande",Helvetica,Arial,Verdana,sans-serif;
 		font-size: 14px;
-		/*background:url(img/bg.jpg) no-repeat center top fixed;
+		background:url(img/bg.jpg) no-repeat center top fixed;
                 -webkit-background-size: cover;
                 -moz-background-size: cover;
                 -o-background-size: cover;
-                background-size: cover;*/
+                background-size: cover;
 	}
 
 	button{
@@ -148,14 +154,14 @@
 </head>
 <body>
 	
-	
+	<input id="pegaId" type="hidden">
 	<div class="container">
 
 		<div class="row">
 			<div class="col-md-offset-2 col-md-8">
 	
 		       <div class="text-center  col-md-6" >
-		       <h1 style=""><img style="margin-top: -40px;margin-bottom: 20px" src="img/logo.png" width="200px" align="left" alt=""></h1>
+		       <a href="index.php"><h1 style=""><img style="margin-top: -40px;margin-bottom: 20px" src="img/logo.png" width="200px" align="left" alt=""></h1></a>
 		       </div>
 
 		       <div class="text-right col-md-6">

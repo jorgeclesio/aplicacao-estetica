@@ -37,9 +37,11 @@
     <body>
 
 <div class="container-fluid">
-   <div class="row">
-       <div class="text-center" style="background: pink;height: 80px;line-height: 80px">
-       <h1 style="margin: 0;line-height: 80px;color: #fff">Cadastro de Colaboradores    </h1>
+   <div class="row" style="background: pink">
+       <div col class="col-md-offset-2 col-md-8 text-center" style="background: pink;height: 80px;line-height: 80px">
+       
+       <div style="background-image: url('img/logo_pq.png');background-repeat: no-repeat;"><h1 style="margin: 0;line-height: 80px;color: #fff">Cadastro de Colaboradores</h1></div>
+       
        </div>
    </div>
 <br><br>

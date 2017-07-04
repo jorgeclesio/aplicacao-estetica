@@ -11,6 +11,8 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
         <title>Izabelita Medeiros Estética</title>
          <!-- Bootstrap -->
          <link rel="stylesheet" href="js/jquery-3.2.1.min.js">
@@ -36,7 +38,6 @@
        
     </head>
     <body>
-
         <p class="text-center text-danger">
             <?php if($_SESSION['status'] != "logado"){
                 echo "voce precisa estar esta logado";
@@ -57,7 +58,12 @@
         <div class="col-md-offset-2 col-md-8">
     <form action="scripts/cad_comanda.php" method="post">
         <div class="row">
-          <div class="form-group col-md-7">
+          <div class="form-group col-md-offset-9 col-md-3">
+                <label for=""></label>
+                <a href="clientes.php" style="text-decoration: none"><input type="text" class="btn btn-block form-control text-center" value="Novo Cliente"></a>
+          </div>
+
+          <div class="form-group col-md-8">
                   <label for="nome">Nome:</label>
                   <select class="form-control col-md-4" name="nome" id="nome" >
                   <option value="">Selecione o Cliente</option>
@@ -70,30 +76,15 @@
                          <?php  }?>
               </select>
           </div>
+          
+          
 
-          <div class="form-group col-md-3">
+          <div class="form-group col-md-4">
                   <label for="data">Data:</label>
                 <input type="text" class="form-control text-center" id="num_comanda" name="num_comanda" readonly value="<?php  echo date('d-m-Y');            ?>">
           </div>
 
-          <div class="form-group col-md-2">
-              <label for="num_comanda">Num. Comanda:</label>
-              <input type="text" class="form-control" id="num_comanda" name="num_comanda" readonly value="
-            <?php
-                     $sql = "SELECT num_comanda FROM comanda WHERE num_comanda = (SELECT MAX(num_comanda) FROM comanda)";    
-                     $result = mysqli_query ($conexao,$sql) or die("erro");         
-                        while ($row = mysqli_fetch_array($result)){
-                                $num_comanda = $row['num_comanda'];
-                                echo $num_comanda +1;
-                         }?>
-
-              ">
-          </div>
-        </div>
-        
-
-        <div class="row">
-          <div class="form-group col-md-6">
+        <div class="form-group col-md-6">
               <label for="servico">Serviços:</label>
                 <select class="form-control " name="servico" id="servico" >
                   <option value="">Selecione o Serviço:</option>
@@ -106,26 +97,57 @@
                            </option>    
                          <?php  }?>
               </select>
-           </div>
-        
-          <div class="form-group col-md-6">
-              <label for="colaborador">Profissional:</label>
-                <select class="form-control " name="colaborador" id="colaborador" >
-                  <option value="">Selecione o Profissional:</option>
+         </div>
+
+         <div class="form-group col-md-2">
+                  <label for="data">Quantidade:</label>
+                <input type="text" class="form-control text-center" id="num_comanda" name="num_comanda">
+          </div>  
+            <div class="form-group col-md-4">
+                          <label for="colaborador">Profissional:</label>
+                            <select class="form-control " name="colaborador" id="colaborador" >
+                              
+                            <?php
+                              $i=1;
+                              $sql = "SELECT nome FROM colaboradores order by nome";    
+                              $result = mysqli_query ($conexao,$sql) or die("erro");         
+                                while ($row = mysqli_fetch_array($result)){?>
+                                    <option value=" <?php echo $row['id'] ?> "><?php echo $i++ ." - ". $row['nome'] ?>
+                                       </option>    
+                                     <?php  }?>
+                          </select>
+            </div>
+
+            <div class="form-group col-md-6">
+              <label for="servico">Home Care:</label>
+                <select class="form-control " name="servico" id="servico" >
+                  <option value="">Selecione o Produto:</option>
                 <?php
                   $i=1;
-                  $sql = "SELECT nome FROM colaboradores order by nome";    
+                  $sql = "SELECT nome FROM produtos order by nome";    
                   $result = mysqli_query ($conexao,$sql) or die("erro");         
                     while ($row = mysqli_fetch_array($result)){?>
                         <option value=" <?php echo $row['id'] ?> "><?php echo $i++ ." - ". $row['nome'] ?>
                            </option>    
                          <?php  }?>
               </select>
-           </div>
+         </div> 
+
+         <div class="form-group col-md-2">
+                  <label for="data">Quantidade:</label>
+                <input  type="text" class="form-control text-center" id="num_comanda" name="num_comanda">
+          </div> 
+        </div>
+        
+
+        <div class="row">
+          
+        
+          
         </div>
         
           <div class="form-group">
-                 <input  type="submit" name="submit" class="btn btn-block" value="Salvar" >
+                 <input style="background: pink;color:#fff" type="submit" name="submit" class="btn btn-block" value="Salvar" >
           </div>
         </div>
       </form>

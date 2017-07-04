@@ -45,9 +45,11 @@
     <body>
 
 <div class="container-fluid">
-   <div class="row">
-       <div class="text-center" style="background: pink;height: 80px;line-height: 80px">
-       <h1 style="margin: 0;line-height: 80px;color: #fff">Cadastro de Serviços</h1>
+   <div class="row" style="background: pink; ">
+       <div col class="col-md-offset-2 col-md-8 text-center" style="background: pink;height: 80px;line-height: 80px">
+       
+       <div style="background-image: url('img/logo_pq.png');background-repeat: no-repeat;"><h1 style="margin: 0;line-height: 80px;color: #fff">Cadastro de Serviços</h1></div>
+       
        </div>
    </div>
 <br><br>
@@ -71,36 +73,26 @@
 
           <div class="form-group col-md-3">
               <label for="preco">Preço Unitário:</label>
-              <input type="text" class="form-control" id="preco" name="preco" placeholder="" required="">
+              <input type="text" class="form-control" id="preco" name="preco" placeholder="R$" required=" ">
           </div>
 
           <div class="form-group col-md-3">
               <label for="comissao">Comissão:</label>
               <input type="number" class="form-control" id="comissao" name="comissao" placeholder="%" >
           </div>
-        <!--
-          <div class="form-group col-md-6">
-              <label for="recorrencia">Recorrência (Data de Retorno):</label>
-              <input type="date" class="form-control" id="recorrencia" name="recorrencia" placeholder="Retornar em: " required="">
-          </div>
-        -->
+          
           <div class="form-group col-md-6">
               <label for="profissional">Profissional:</label>
               <select class="form-control col-md-4" name="profissional" id="profissional" >
                   <option value="">Selecione o Profissional</option>
 
                 <?php
-                  $sql = "SELECT nome FROM colaboradores";
-                  $result = mysqli_query ($conexao,$sql) or die("erro");
 
-
-
-                  while ($row = mysqli_fetch_array($result))
+               $result = consulta_banco("SELECT nome FROM colaboradores");
                   
-                  $nome = $row['nome'];
-
-                   {?>
-                    <option value=" <?php echo $nome ?> "><?php echo $nome ?></option>
+                  while ($row = mysqli_fetch_array($result)){?>
+                    
+                    <option value=" <?php echo $row['nome']; ?> "><?php echo $row['nome']; ?></option>
 
                 <?php  }?>
 

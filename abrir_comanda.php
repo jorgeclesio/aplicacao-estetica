@@ -81,7 +81,7 @@
 
           <div class="form-group col-md-4">
                   <label for="data">Data:</label>
-                <input type="text" class="form-control text-center" id="num_comanda" name="num_comanda" readonly value="<?php  echo date('d-m-Y');            ?>">
+                <input type="text" class="form-control text-center" id="data" name="data" readonly value="<?php  echo date('d-m-Y');?>">
           </div>
 
         <div class="form-group col-md-6">
@@ -100,10 +100,10 @@
          </div>
 
          <div class="form-group col-md-2">
-                  <label for="data">Quantidade:</label>
-                <input type="text" class="form-control text-center" id="num_comanda" name="num_comanda">
+                  <label for="qtd_servico">Quantidade:</label>
+                <input type="text" class="form-control text-center" id="qtd_servico" name="qtd_servico">
           </div>  
-            <div class="form-group col-md-4">
+          <div class="form-group col-md-4">
                           <label for="colaborador">Profissional:</label>
                             <select class="form-control " name="colaborador" id="colaborador" >
                               
@@ -119,8 +119,8 @@
             </div>
 
             <div class="form-group col-md-6">
-              <label for="servico">Home Care:</label>
-                <select class="form-control " name="servico" id="servico" >
+              <label for="produto">Home Care:</label>
+                <select class="form-control " name="produto" id="produto" >
                   <option value="">Selecione o Produto:</option>
                 <?php
                   $i=1;
@@ -134,8 +134,8 @@
          </div> 
 
          <div class="form-group col-md-2">
-                  <label for="data">Quantidade:</label>
-                <input  type="text" class="form-control text-center" id="num_comanda" name="num_comanda">
+                  <label for="qtd_produto">Quantidade:</label>
+                <input  type="text" class="form-control text-center" id="qtd_produto" name="qtd_produto">
           </div> 
         </div>
         

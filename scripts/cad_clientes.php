@@ -14,7 +14,7 @@ if ($_POST['submit']) {
 	$cidade      = $_POST['cidade'];
 	$estado      = $_POST['estado'];
 
-consulta_banco("INSERT INTO clientes (nome,telefone,cpf,aniversario,email,sexo,endereco,bairro,cidade,estado) 
+consulta_banco("INSERT INTO clientes (cli_nome,cli_telefone,cli_cpf,cli_aniversario,cli_email,cli_sexo,cli_endereco,cli_bairro,cli_cidade,cli_estado) 
 		VALUES ('$nome','$telefone','$cpf','$aniversario','$email','$sexo','$endereco','$bairro','$cidade','$estado')") or die("erro ao inserir");
 
 	

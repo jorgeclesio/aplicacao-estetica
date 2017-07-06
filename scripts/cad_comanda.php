@@ -3,19 +3,18 @@ include '../conexao.php';
 
 if ($_POST['submit']) {
 	
-$num_comanda  = $_POST['num_comanda'];
-$nome         = $_POST['nome'];
-$servico      = $_POST['servico'];
-$data        = date('Y-m-d');
-$colaborador  = $_POST['colaborador'];
+
+		$cli_nome     = $_POST['nome'];
+		$data         = $_POST['nome'];
+		$id_servico   = $_POST['servico'];
+		$qtd_servico  = $_POST['qtd_servico'];
+		$id_servico   = $_POST['produto'];
+		$qtd_produto  = $_POST['qtd_produto'];
 
 
-	$sql = "INSERT INTO comanda (num_comanda,id_cliente,id_servico,id_colaborador,data) 
-		VALUES ('$num_comanda','$nome','$servico','$colaborador','$data')";
-	$query = mysqli_query ($conexao, $sql) or die(mysql_error());
-
-	  echo "<script> alert('Cadastro realizado');</script>";
-      echo "<SCRIPT> location.href='../index.php' </SCRIPT>"; 
+	echo $cli_nome;
+	  //echo "<script> alert('Cadastro realizado');</script>";
+      //echo "<SCRIPT> location.href='../index.php' </SCRIPT>"; 
 }else{
 	echo "erro ao inserir";
 }

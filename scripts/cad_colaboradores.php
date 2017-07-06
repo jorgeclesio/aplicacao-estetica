@@ -15,7 +15,7 @@ $bairro      = $_POST['bairro'];
 $cidade      = $_POST['cidade'];
 $estado      = $_POST['estado'];
 
-	consulta_banco("INSERT INTO colaboradores (nome,telefone,cpf,aniversario,email,sexo,endereco,bairro,cidade,estado) 
+	consulta_banco("INSERT INTO colaboradores (col_nome,col_telefone,col_cpf,col_aniversario,col_email,col_sexo,col_endereco,col_bairro,col_cidade,col_estado) 
 		VALUES ('$nome','$telefone','$cpf','$aniversario','$email','$sexo','$endereco','$bairro','$cidade','$estado')") or die("erro ao inserir");
 
 

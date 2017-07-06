@@ -35,7 +35,7 @@
                 background-size: cover;
             }
     a{color: blue; text-decoration: none}
-    a:hover{color: #fff;text-decoration: none;}
+    a:hover{color: ;text-decoration: none;}
     .botao{background: pink}
     
     </style>
@@ -93,59 +93,44 @@
                     <button class="btn" type="submit" name="buscar" value="Buscar">Buscar</button>
                 
             </form>
-             <br>   
-      <table class="table table-responsive table-striped table-bordered" style="margin-top: 1px">
-        <tr class="text-center" style="background: pink;color:gray;">
-            <td>Num Comanda</td>
-            <td>Data</td>
-            <td>Serviços</td>
-            <td>Produtos</td>
-            <td>Valor a Pagar</td>
-            <td>Status</td>
-            <?php
-       
-        ?>
-            
-        </tr>
+             <br>
 
+
+      
+        <h3>Comandas Abertas</h3>
         <?php
-         
-        
-         $query = "SELECT * FROM comanda WHERE status = 'Aberto' ";
-         $result = mysqli_query ($conexao, $query) or die ("Erro ao consultar o banco");
+      
 
-         
-
-
-         while ($res = mysqli_fetch_array($result)) {?>
+        $consulta = consulta_banco("select comanda.id,comanda.data,clientes.cli_nome,colaboradores.col_nome,serv_comanda.quantidade,servicos.serv_valor,servicos.serv_nome from comanda
+            inner join serv_comanda
+            inner join colaboradores
+            inner join clientes
+            inner join servicos
+        on serv_comanda.id_comanda = comanda.id  and comanda.status = 'Aberta' group by comanda.id");
+            while ($row = mysqli_fetch_array($consulta)) {?>
+        <div class="col-md-12" style="background: #fffAF0; border-radius: 8px">
+            <div class="col-md-8"></div><div class="col-md-4">Comanda N. <?php echo $row['id']; ?></div>
+            <div class="col-md-12">Cliente: <?php echo $row['cli_nome']; ?></div><br><br><br>
+            <div class="col-md-6">Serviços:</div>
+            <div class="col-md-2">Qtd:</div>
+            <div class="col-md-4">Valor:</div>
+            <div class="col-md-6"><?php echo $row['serv_nome']; ?></div>
+            <div class="col-md-2"><?php echo $row['quantidade']; ?></div>
+            <div class="col-md-4"><?php echo 'R$ '.number_format($row['serv_valor'], 2, ',', '.'); ?></div>
+                <?php $valor=''; $valor += $row['serv_valor'];  ?>
+            <div class="col-md-12" style="border-bottom: 1px solid gray"></div>
+            <div class="col-md-8 text-right "><b>TOTAL</b></div>   
+            <div class="col-md-4"><b><?php echo 'R$ '.number_format($valor, 2, ',', '.');  ?></b></div>
+            
+            <div class="col-md-6" ></div>
+            <div class="col-md-6 text-right"><a href="pagamento.php" style="display: block;">
+                <button class="btn" style="background: #00FA9A;">FAZER PAGAMENTO</button></a></div>
              
-    <tr style="text-align:center;">
-         <td> <?php echo $res['num_comanda'] ?> </td>
-         <td> <?php echo $res['data'] ?></td>
-         <td> <?php 
-         
-            $servico = "SELECT * FROM servicos WHERE id=$res[id_servico]";
-                    $exec_servico = mysqli_query($conexao,$servico);
-                    $escreve_nome_servico = mysqli_fetch_array($exec_servico);
-                        echo  $escreve_nome_servico['nome']."<br>";
-            ?></td>
-         <td> 
-            <?php 
-         
-            $produto = "SELECT * FROM produtos WHERE id=$res[id_produto]";
-                    $exec_produto = mysqli_query($conexao,$produto);
-                    $escreve_nome_produto = mysqli_fetch_array($exec_produto);
-                        echo  $escreve_nome_produto['nome']."<br>";
-            ?>
-         </td>
-         <td> <?php echo $res['total'] ?>
-        </td>
-         <td> <a href="#">Fechar Comanda</a></td>
-       
-
-        </tr>
-        <?php } ?>
-        </table>
+        </div> 
+            <?php }  ?>
+             
+    
+      
             
             
        

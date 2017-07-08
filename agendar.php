@@ -5,10 +5,11 @@ include 'conexao.php';
 if (isset($_POST['submit'])) {
 	
 	$nome    = $_POST['nome'] ;
-	$servico = $_POST['servico'];
 	$data    = $_POST['data'];
+	$servico = $_POST['servico'];
 	$hora    = $_POST['hora'];
 	$status  = "agendado";
+	$nome    = $nome . "  -  " . $servico;
 	$start    = $data ." " . $hora;
 	$duracao = $_POST['duracao'];
 

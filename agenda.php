@@ -80,7 +80,7 @@
 		                    	id: $(this).attr('id'),
 		                        title: $(this).attr('title'),
 		                        start: $(this).attr('start'), // will be parsed
-		                        
+
 		                    });
 		                });
 		                callback(events);
@@ -155,7 +155,7 @@
 </head>
 <body>
 	
-	<input id="pegaId" type="hidden">
+	<input id="pegaId" type="text">
 	<div class="container">
 
 		<div class="row">

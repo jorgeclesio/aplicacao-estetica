@@ -49,25 +49,25 @@
 
     <div class="row">
     <div class="col-md-offset-2 col-md-8">
-      <form action="scripts/cad_clientes.php">
+      <form action="scripts/cad_produtos.php">
           <div class="form-group col-md-12">
                   <label for="nome">Nome:</label>
-                  <input type="text" class="form-control"  id="nome" name="nome" placeholder="" required>
+                  <input type="text" class="form-control"  id="nome" name="nome" placeholder="" autofocus="" required>
           </div>
 
           <div class="form-group col-md-12">
               <label for="descricao">Descrição:</label>
-              <textarea rows="4" cols="50" class="form-control" id="descricao" name="descricao" placeholder="" required=""></textarea>
+              <textarea rows="4" cols="50" class="form-control" id="descricao" name="descricao" placeholder=""></textarea>
           </div>
           
           <div class="form-group col-md-4">
               <label for="p_custo">Preço de Custo:</label>
-              <input type="text" class="form-control" id="p_custo" name="p_custo" placeholder="R$ " required="">
+              <input type="number" class="form-control" id="p_custo" name="p_custo" placeholder="R$ " required="">
           </div>
 
 
           <div class="form-group col-md-4">
-              <label for="p_venda">Preco  de Venda:</label>
+              <label for="number">Preco  de Venda:</label>
               <input type="text" class="form-control" id="p_venda" name="p_venda" placeholder="R$ " required="">
           </div>
 

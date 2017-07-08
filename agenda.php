@@ -79,7 +79,8 @@
 		                    events.push({
 		                    	id: $(this).attr('id'),
 		                        title: $(this).attr('title'),
-		                        start: $(this).attr('start') // will be parsed
+		                        start: $(this).attr('start'), // will be parsed
+		                        
 		                    });
 		                });
 		                callback(events);

@@ -68,11 +68,12 @@
                   <select class="form-control col-md-4" name="nome" id="nome" >
                   <option value="">Selecione o Cliente</option>
                 <?php
-                    $i=1;
-                     $sql = "SELECT nome FROM clientes order by nome";    
-                     $result = mysqli_query ($conexao,$sql) or die("erro");         
-                        while ($row = mysqli_fetch_array($result)){?>
-                           <option value=" <?php echo $row['id'] ?> "><?php echo $i++ ." - ". $row['nome'] ?></option>    
+                $i=1;
+                $consulta_cliente = consulta_banco("SELECT * FROM clientes order by cli_nome");
+                    
+                              
+                        while ($row = mysqli_fetch_array($consulta_cliente)){?>
+                           <option value=" <?php echo $row['idclientes'] ?> "><?php echo $i++ ." - ". $row['cli_nome'] ?></option>    
                          <?php  }?>
               </select>
           </div>
@@ -89,11 +90,12 @@
                 <select class="form-control " name="servico" id="servico" >
                   <option value="">Selecione o Serviço:</option>
                 <?php
+                $consulta_servico = consulta_banco("SELECT serv_nome FROM servicos order by serv_nome");
+                    $i=1;
                   $i=1;
-                  $sql = "SELECT nome FROM servicos order by nome";    
-                  $result = mysqli_query ($conexao,$sql) or die("erro");         
-                    while ($row = mysqli_fetch_array($result)){?>
-                        <option value=" <?php echo $row['id'] ?> "><?php echo $i++ ." - ". $row['nome'] ?>
+                          
+                    while ($row = mysqli_fetch_array($consulta_servico)){?>
+                        <option value=" <?php echo $row['id'] ?> "><?php echo $i++ ." - ". $row['serv_nome'] ?>
                            </option>    
                          <?php  }?>
               </select>
@@ -108,11 +110,10 @@
                             <select class="form-control " name="colaborador" id="colaborador" >
                               
                             <?php
-                              $i=1;
-                              $sql = "SELECT nome FROM colaboradores order by nome";    
-                              $result = mysqli_query ($conexao,$sql) or die("erro");         
-                                while ($row = mysqli_fetch_array($result)){?>
-                                    <option value=" <?php echo $row['id'] ?> "><?php echo $i++ ." - ". $row['nome'] ?>
+              $consulta = consulta_banco("SELECT col_nome FROM colaboradores order by col_nome");
+                              $i=1;      
+                                while ($row = mysqli_fetch_array($consulta)){?>
+                                    <option value=" <?php echo $row['idcolaboradores'] ?> "><?php echo $i++ ." - ". $row['col_nome'] ?>
                                        </option>    
                                      <?php  }?>
                           </select>
@@ -124,10 +125,8 @@
                   <option value="">Selecione o Produto:</option>
                 <?php
                   $i=1;
-                  $sql = "SELECT nome FROM produtos order by nome";    
-                  $result = mysqli_query ($conexao,$sql) or die("erro");         
-                    while ($row = mysqli_fetch_array($result)){?>
-                        <option value=" <?php echo $row['id'] ?> "><?php echo $i++ ." - ". $row['nome'] ?>
+                  $consulta_produto = consulta_banco("SELECT prod_nome FROM produtos ORDER BY prod_nome");       while ($row = mysqli_fetch_array($consulta_produto)){?>
+                        <option value=" <?php echo $row['id'] ?> "><?php echo $i++ ." - ". $row['prod_nome'] ?>
                            </option>    
                          <?php  }?>
               </select>
@@ -138,21 +137,14 @@
                 <input  type="text" class="form-control text-center" id="qtd_produto" name="qtd_produto">
           </div> 
         </div>
-        
-
-        <div class="row">
-          
-        
-          
-        </div>
-        
+       
           <div class="form-group">
                  <input style="background: pink;color:#fff" type="submit" name="submit" class="btn btn-block" value="Salvar" >
           </div>
-        </div>
+        
       </form>
             
-            
+          </div>  
 
             
         </div>

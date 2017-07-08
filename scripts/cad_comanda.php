@@ -1,9 +1,8 @@
 <?php
 include '../conexao.php';
 
-if ($_POST['submit']) {
-	
 
+	
 		$cli_nome     = $_POST['nome'];
 		$data         = $_POST['nome'];
 		$id_servico   = $_POST['servico'];
@@ -15,8 +14,8 @@ if ($_POST['submit']) {
 	echo $cli_nome;
 	  //echo "<script> alert('Cadastro realizado');</script>";
       //echo "<SCRIPT> location.href='../index.php' </SCRIPT>"; 
-}else{
-	echo "erro ao inserir";
-}
+
+	//echo "erro ao inserir";
+
 
 ?>

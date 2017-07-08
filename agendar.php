@@ -10,7 +10,6 @@ if (isset($_POST['submit'])) {
 	$hora    = $_POST['hora'];
 	$status  = "agendado";
 	$start    = $data ." " . $hora;
-
 	$duracao = $_POST['duracao'];
 
 	switch ($duracao) {

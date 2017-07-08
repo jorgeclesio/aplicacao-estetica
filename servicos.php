@@ -68,12 +68,12 @@
       <form action="scripts/cad_servicos.php" method="post">
           <div class="form-group col-md-12">
                   <label for="nome">Nome do Serviço:</label>
-                  <input type="text" class="form-control"  id="nome" name="nome" placeholder="" required>
+                  <input type="text" class="form-control"  id="nome" name="nome" placeholder="" autofocus="" required>
           </div>
 
           <div class="form-group col-md-3">
               <label for="preco">Preço Unitário:</label>
-              <input type="text" class="form-control" id="preco" name="preco" placeholder="R$" required=" ">
+              <input type="number" class="form-control" id="preco" name="preco" placeholder="R$" required=" ">
           </div>
 
           <div class="form-group col-md-3">
@@ -88,11 +88,11 @@
 
                 <?php
 
-               $result = consulta_banco("SELECT nome FROM colaboradores");
+               $result = consulta_banco("SELECT col_nome FROM colaboradores");
                   
                   while ($row = mysqli_fetch_array($result)){?>
                     
-                    <option value=" <?php echo $row['nome']; ?> "><?php echo $row['nome']; ?></option>
+                    <option value=" <?php echo $row['col_nome']; ?> "><?php echo $row['col_nome']; ?></option>
 
                 <?php  }?>
 

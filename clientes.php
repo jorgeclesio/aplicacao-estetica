@@ -56,11 +56,11 @@
         </p>
 
     <div class="row">
-    <div class="col-md-offset-2 col-md-8">
+    <div class="col-md-offset-2 col-md-8 ">
       <form action="scripts/cad_clientes.php" method="post">
-          <div class="form-group col-md-12">
+          <div class="form-group col-md-12 ">
                   <label for="nome">Nome:</label>
-                  <input type="text" class="form-control"  id="nome" name="nome" placeholder="" required>
+                  <input type="text" class="form-control"  id="nome" name="nome" placeholder="" autofocus="" required>
           </div>
 
           <div class="form-group col-md-4">

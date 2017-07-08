@@ -73,6 +73,7 @@
             </div>
 
             <br><br><br>
+        <div id="busca" style="display: none">
             <div class="col-md-12">
                <p>Filtrar Período:</p> 
             </div>
@@ -88,43 +89,45 @@
                     <span> Até:</span>
                     <input class="btn" type="date" name="data_final" id="fim">
                 </div>
-
-                
                     <button class="btn" type="submit" name="buscar" value="Buscar">Buscar</button>
                 
             </form>
              <br>
-
+        </div>
 
       
         <h3>Comandas Abertas</h3>
         <?php
       
-
         $consulta = consulta_banco("select comanda.id,comanda.data,clientes.cli_nome,colaboradores.col_nome,serv_comanda.quantidade,servicos.serv_valor,servicos.serv_nome from comanda
             inner join serv_comanda
             inner join colaboradores
             inner join clientes
             inner join servicos
         on serv_comanda.id_comanda = comanda.id  and comanda.status = 'Aberta' group by comanda.id");
+            
+            //DETALHAMENTO DA COMANDA
             while ($row = mysqli_fetch_array($consulta)) {?>
-        <div class="col-md-12" style="background: #fffAF0; border-radius: 8px">
-            <div class="col-md-8"></div><div class="col-md-4">Comanda N. <?php echo $row['id']; ?></div>
+        <div class="col-md-12" style="background: #fffAF0; border: 1px solid pink; border-radius: 8px; margin-bottom: 5px">
+            <div class="col-md-8 text-right"></div><div class="col-md-4 text-right">Comanda N. <b><?php echo $row['id']; ?></b></div>
+            <!--cabeçalho da comanda-->
             <div class="col-md-12">Cliente: <?php echo $row['cli_nome']; ?></div><br><br><br>
-            <div class="col-md-6">Serviços:</div>
+            <div class="col-md-6"><u>Serviços:</u></div>
             <div class="col-md-2">Qtd:</div>
             <div class="col-md-4">Valor:</div>
+            <!--resultados da comanda-->
             <div class="col-md-6"><?php echo $row['serv_nome']; ?></div>
             <div class="col-md-2"><?php echo $row['quantidade']; ?></div>
             <div class="col-md-4"><?php echo 'R$ '.number_format($row['serv_valor'], 2, ',', '.'); ?></div>
-                <?php $valor=''; $valor += $row['serv_valor'];  ?>
+                <?php $valor=''; $valor += $row['serv_valor'];  ?><br><br><br>
             <div class="col-md-12" style="border-bottom: 1px solid gray"></div>
             <div class="col-md-8 text-right "><b>TOTAL</b></div>   
             <div class="col-md-4"><b><?php echo 'R$ '.number_format($valor, 2, ',', '.');  ?></b></div>
             
             <div class="col-md-6" ></div>
+            <!--CONCLUIR A COMANDA E FAZER O PAGAMENTO-->
             <div class="col-md-6 text-right"><a href="pagamento.php" style="display: block;">
-                <button class="btn" style="background: #00FA9A;">FAZER PAGAMENTO</button></a></div>
+                <button class="btn btn-xs" style="background: #00FA9A;margin: 8px;padding: 5px;color: #ffe"> PAGAR</button></a></div>
              
         </div> 
             <?php }  ?>

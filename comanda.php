@@ -16,6 +16,7 @@
         <link href="css/style.css" rel="stylesheet">
         <link href="js/jquery-ui.min.css" rel="stylesheet">
         <script src="js/jquery-3.2.1.min.js" type="text/javascript"></script>
+        <script src="js/bootstrap.min.js" type="text/javascript"></script>
         <script src="ajax/cad_clientes.js"></script>
 
     <style type="text/css">
@@ -105,11 +106,12 @@
             inner join clientes
             inner join servicos
         on serv_comanda.id_comanda = comanda.id  and comanda.status = 'Aberta' group by comanda.id");
-            
+             
             //DETALHAMENTO DA COMANDA
             while ($row = mysqli_fetch_array($consulta)) {?>
         <div class="col-md-12" style="background: #fffAF0; border: 1px solid pink; border-radius: 8px; margin-bottom: 5px">
-            <div class="col-md-8 text-right"></div><div class="col-md-4 text-right">Comanda N. <b><?php echo $row['id']; ?></b></div>
+                <?php $id = $row['id']; ?>
+            <div class="col-md-8 text-right"></div><div class="col-md-4 text-right">Comanda N. <b><?php echo $id; ?></b></div>
             <!--cabeçalho da comanda-->
             <div class="col-md-12">Cliente: <?php echo $row['cli_nome']; ?></div><br><br><br>
             <div class="col-md-6"><u>Serviços:</u></div>
@@ -126,26 +128,77 @@
             
             <div class="col-md-6" ></div>
             <!--CONCLUIR A COMANDA E FAZER O PAGAMENTO-->
-            <div class="col-md-6 text-right"><a href="pagamento.php" style="display: block;">
-                <button class="btn btn-xs" style="background: #00FA9A;margin: 8px;padding: 5px;color: #ffe"> PAGAR</button></a></div>
+            <div class="col-md-6 text-right">
+                <button type="button" style="margin: 5px;" class="btn btn-success" data-toggle="modal" data-target="#myModal">PAGAR
+                </button>
+            </div>
              
         </div> 
             <?php }  ?>
-             
-    
-      
-            
-            
-       
+ 
         </div>
+
+
    </div>         
+  
+
+
+
+
+
+
+  <!-- MODAL DE PAGAMENTOS -->
+    <div class="container">
+  
+  
+   <!-- Modal -->
+  <div class="modal fade" style="background: " id="myModal" role="dialog">
+    <div class="modal-dialog">
     
+      <!-- Modal conteudo-->
+      <div  style="background: #FFEFD5" class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">PAGAMENTO</h4>
+        </div>
+        <div  class="modal-body">
+          <form action="">
+              <div class="col-md-8 text-right"></div><div class="col-md-4 text-right">Comanda N. <b><?php echo $id; ?></b></div>
+              
+              <hr>
+                            
+              <div class="col-md-6"></div>
+              <div></div><hr>
+              <div class="col-md-6"><label for="total">Valor a Pagar:</label>
+                  <input class="form-control" type="text" readonly=""  value="<?php echo 'R$ '.number_format($valor, 2, ',', '.');  ?>"></div>
+              <div class="form-group col-md-6">
+                <label for="dinheiro"><span>Dinheiro</span></label>
+                <input id="input-dinheiro" class="form-control" type="number" autofocus="" placeholder="R$ ">
+              </div>
+              <div class="col-md-6"><label for="cartao">Troco:</label>
+                    <input class="form-control" type="text" readonly=""></div>
+              <div class="form-group col-md-6">
+                <label for="cartao">Cartão:</label>
+                <input class="form-control" type="number" placeholder="R$ ">
+              </div>
+
+              
+          </form>
+        </div>
+        <div class="col-md-6"></div>
+        <div class="modal-footer ">
+          <button type="button" class="btn btn-success btn-block" data-dismiss="modal">Concluir Pagamento</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  
+</div>
    
 
 
 
-</div>        
-    
-      
+
     </body>
 </html>

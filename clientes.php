@@ -54,8 +54,10 @@
                 
             }?>
         </p>
-
+      
     <div class="row">
+    <div class="text-right col-md-offset-2 col-md-8">
+      <a href="index.php">Voltar</a></div>
     <div class="col-md-offset-2 col-md-8 ">
       <form action="scripts/cad_clientes.php" method="post">
           <div class="form-group col-md-12 ">

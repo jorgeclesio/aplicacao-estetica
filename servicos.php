@@ -46,6 +46,7 @@
 
 <div class="container-fluid">
    <div class="row" style="background: pink; ">
+
        <div col class="col-md-offset-2 col-md-8 text-center" style="background: pink;height: 80px;line-height: 80px">
        
        <div style="background-image: url('img/logo_pq.png');background-repeat: no-repeat;"><h1 style="margin: 0;line-height: 80px;color: #fff">Cadastro de Serviços</h1></div>
@@ -64,6 +65,8 @@
         </p>
 
     <div class="row">
+    <div class="text-right col-md-offset-2 col-md-8">
+      <a href="index.php">Voltar</a></div>
     <div class="col-md-offset-2 col-md-8">
       <form action="scripts/cad_servicos.php" method="post">
           <div class="form-group col-md-12">

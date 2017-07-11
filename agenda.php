@@ -52,13 +52,13 @@
         
         eventClick: function pegaId(calEvent){
 		   var id_event = calEvent.id; //pega o id do evento
-		   //alert(calEvent.id);
-		   		$('#idDoEvento').val(calEvent.id);
-		   		$('#nomeDoEvento').val(calEvent.title);
 	   			
 	   			//pega o id quando clica no evento
-	   			var evento = $('#pegaId').val(calEvent.id);
-
+	   			var evento = calEvent.id;
+	   			var confirma = confirm('Você quer alterar esse agendamento?');
+	   			 if (confirma == true) {
+	   			 window.location = "update_events.php?id="+evento;
+				}
 	   			
 		},
 		
@@ -155,7 +155,7 @@
 </head>
 <body>
 	
-	<input id="pegaId" type="text">
+	
 	<div class="container">
 
 		<div class="row">

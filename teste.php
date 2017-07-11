@@ -1,14 +1,10 @@
-<?php
-  //teste
-
-include_once 'conexao.php';
-
-//ATUALIZANDO AGENDAMENTO
-
-$id1 = $_GET['id'];
-$nome2 = $_GET['nome'];
-echo $id1;
-echo $nome2;
-
-
-?>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<h1>Testando</h1>
+</body>
+</html>

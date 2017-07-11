@@ -179,8 +179,8 @@
 
 	<!-- #############CALENDARIO############# -->
 		<div class="row">
-			<div class="col-md-offset-2 col-md-8">
-				<div id='calendar'></div>
+			<div class="col-md-12">
+				<div style="text-align: center" id='calendar'></div>
 			</div>
 		</div>
 	</div>
@@ -197,15 +197,15 @@
 	        <form action="agendar.php" method="post">
 				  <div class="form-group">
 				    <label for="nome">Nome:</label>
-				    <input type="text" class="form-control text-uppercase" name="nome" id="nome">
+				    <input type="text" class="form-control text-uppercase" name="nome" id="nome" required="">
 				  </div>
 				  <div class="form-group col-md-6">
 				    <label for="data">Data:</label>
-				    <input type="date" name="data" class="form-control" id="date">
+				    <input type="date" name="data" class="form-control" id="date" required="">
 				  </div>
 				  <div class="form-group col-md-6">
 				    <label for="servico">Serviço:</label>
-				    <select class="form-control text-uppercase" name="servico" id="servico">
+				    <select class="form-control text-uppercase" name="servico" id="servico" required="">
 				    	<option value="">Selecione o Servico</option>
 				    	<?php
                				$result = consulta_banco("SELECT serv_nome FROM servicos");
@@ -219,11 +219,11 @@
 				  </div>
 				  <div class="form-group col-md-6">
 				    <label for="hora">Horário Início:</label>
-				    <input type="time" class="form-control" name="hora" id="hora">
+				    <input type="time" class="form-control" name="hora" id="hora" required="">
 				  </div>
 				  <div class="form-group col-md-6">
 				    <label for="duracao">Duracao:</label>
-				    <select class="form-control" name="duracao" id="duracao">
+				    <select class="form-control" name="duracao" id="duracao" required="">
 				    	<option value="1">1 hora</option>
 				    	<option value="15">1 hora e meia</option>
 				    	<option value="2">2 horas</option>

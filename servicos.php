@@ -71,7 +71,7 @@
       <form action="scripts/cad_servicos.php" method="post">
           <div class="form-group col-md-12">
                   <label for="nome">Nome do Serviço:</label>
-                  <input type="text" class="form-control"  id="nome" name="nome" placeholder="" autofocus="" required>
+                  <input type="text" class="form-control text-uppercase"  id="nome" name="nome" placeholder="" autofocus="" required>
           </div>
 
           <div class="form-group col-md-3">
@@ -86,7 +86,7 @@
           
           <div class="form-group col-md-6">
               <label for="profissional">Profissional:</label>
-              <select class="form-control col-md-4" name="profissional" id="profissional" >
+              <select class="form-control text-uppercase col-md-4" name="profissional" id="profissional" >
                   <option value="">Selecione o Profissional</option>
 
                 <?php

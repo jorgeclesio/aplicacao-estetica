@@ -62,12 +62,12 @@
       <form action="scripts/cad_colaboradores.php" method="post">
           <div class="form-group col-md-12">
                   <label for="nome">Nome:</label>
-                  <input type="text" class="form-control"  id="nome" name="nome" placeholder="" required>
+                  <input type="text" class="form-control text-uppercase"  id="nome" name="nome" placeholder="" required>
           </div>
 
           <div class="form-group col-md-4">
               <label for="telefone">Telefone:</label>
-              <input type="text" class="form-control" id="telefone" name="nome" placeholder="" required="">
+              <input type="tel" class="form-control" id="telefone" name="nome" placeholder="" required="">
           </div>
 
           <div class="form-group col-md-4">
@@ -97,22 +97,22 @@
 
           <div class="form-group col-md-12">
               <label for="endereco">Endereço:</label>
-              <input type="text" class="form-control" id="endereco" name="endereco" placeholder="" required="">
+              <input type="text" class="form-control text-uppercase" id="endereco" name="endereco" placeholder="" required="">
           </div>
 
           <div class="form-group col-md-5">
               <label for="bairro">Bairro:</label>
-              <input type="text" class="form-control" id="bairro" name="bairro" placeholder="" required="">
+              <input type="text" class="form-control text-uppercase" id="bairro" name="bairro" placeholder="" required="">
           </div>
 
           <div class="form-group col-md-5">
               <label for="cidade">Cidade:</label>
-              <input type="text" class="form-control" id="cidade" name="cidade" placeholder="" required="">
+              <input type="text" class="form-control text-uppercase" id="cidade" name="cidade" placeholder="" required="">
           </div>
 
           <div class="form-group col-md-2">
               <label for="estado">Estado:</label>
-              <input type="text" class="form-control" id="estado" name="estado" placeholder="" required="">
+              <input type="text" class="form-control text-uppercase" id="estado" name="estado" placeholder="" required="">
           </div>
           <div class="form-group">
                  <input style="background: pink" type="submit" name="submit" class="btn btn-block" value="Salvar" >

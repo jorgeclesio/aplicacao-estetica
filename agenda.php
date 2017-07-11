@@ -1,5 +1,6 @@
 <?php
 	include 'conexao.php';
+	
 ?>
 <!DOCTYPE html>
 <html>
@@ -11,6 +12,7 @@
 <link href="js/jquery-ui.min.css" rel="stylesheet">
 <link href="css/jquery-ui.min.css" rel="stylesheet">
 
+
 <script src="js/jquery-3.2.1.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src='lib/moment.min.js'></script>
@@ -19,7 +21,7 @@
 <script>
 
 	$(document).ready(function() {
-
+  
  var date = new Date();
  var d = date.getDate();
  var m = date.getMonth();
@@ -56,7 +58,7 @@
 	   			//pega o id quando clica no evento
 	   			var evento = calEvent.id;
 	   			var confirma = confirm('Você quer alterar esse agendamento?');
-	   			 if (confirma == true) {
+	   			 if (confirma) {
 	   			 window.location = "update_events.php?id="+evento;
 				}
 	   			
@@ -122,8 +124,7 @@
 		});
 	
 
-	});
-
+	});//SCRIPT DO FULLCALENDAR
 </script>
 <style>
 
@@ -148,9 +149,6 @@
 		
 		margin: 20 auto;
 	}
-	 
-     
-
 </style>
 </head>
 <body>
@@ -186,23 +184,20 @@
 			</div>
 		</div>
 	</div>
-
-
-
-		
+	
 <!-- #############CADASTRO DE AGENDAMENTOS############# -->
 <div id="form-agenda" class="modal fade"  role="dialog">
   <div class="modal-dialog">
     <div  style="background: #FFEFD5"  class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title text-center">Agendamento</h4>
+        <h4 class="modal-title"><h1 align="center">Agendamento</h1></h4>
       </div>
       <div  class="modal-body">
 	        <form action="agendar.php" method="post">
 				  <div class="form-group">
 				    <label for="nome">Nome:</label>
-				    <input type="text" class="form-control" name="nome" id="nome">
+				    <input type="text" class="form-control text-uppercase" name="nome" id="nome">
 				  </div>
 				  <div class="form-group col-md-6">
 				    <label for="data">Data:</label>
@@ -210,11 +205,16 @@
 				  </div>
 				  <div class="form-group col-md-6">
 				    <label for="servico">Serviço:</label>
-				    <select class="form-control" name="servico" id="servico">
+				    <select class="form-control text-uppercase" name="servico" id="servico">
 				    	<option value="">Selecione o Servico</option>
-				    	<option value="Limpeza de Pele">Limpeza de Pele</option>
-				    	<option value="Sobracelhas Fio a Fio">Sobracelhas Fio a Fio</option>
-				    	<option value="Alongamento de Cílios">Alongamento de Cílios</option>
+				    	<?php
+               				$result = consulta_banco("SELECT serv_nome FROM servicos");
+                  
+                  			while ($row = mysqli_fetch_array($result)){?>
+                    
+              <option value=" <?php echo $row['serv_nome']; ?> "><?php echo $row['serv_nome']; ?></option>
+
+                <?php  }?>
 				    </select>
 				  </div>
 				  <div class="form-group col-md-6">

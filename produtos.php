@@ -55,7 +55,7 @@
       <form action="scripts/cad_produtos.php">
           <div class="form-group col-md-12">
                   <label for="nome">Nome:</label>
-                  <input type="text" class="form-control"  id="nome" name="nome" placeholder="" autofocus="" required>
+                  <input type="text" class="form-control text-uppercase"  id="nome" name="nome" placeholder="" autofocus="" required>
           </div>
 
           <div class="form-group col-md-12">
@@ -76,7 +76,7 @@
 
           <div class="form-group col-md-4">
               <label for="estoque">Estoque:</label>
-              <input type="text" class="form-control" id="estoque" name="estoque" placeholder="" required="">
+              <input type="number" class="form-control" id="estoque" name="estoque" placeholder="" required="">
           </div>
 
           

@@ -2,4 +2,6 @@ body{color: pink}
 
 .fc-center{
 	background: grey;
+
+input {text-transform: uppercase;}
 }

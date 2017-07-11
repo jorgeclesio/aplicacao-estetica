@@ -57,7 +57,7 @@
 		   		$('#nomeDoEvento').val(calEvent.title);
 	   			
 	   			//pega o id quando clica no evento
-	   			$('#pegaId').val(calEvent.id);
+	   			var evento = $('#pegaId').val(calEvent.id);
 
 	   			
 		},
@@ -110,7 +110,7 @@
 		ForceEventDuration:true,
 		DefaultTimedEventDuration:'01:00:00',
 		defaultView: 'agendaWeek',
-		editable:false,
+		editable:true,
 		
 		monthNames: ["Janeiro","Fevereiro","Março","Abril","Maio","Junho","Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro" ],	
 			

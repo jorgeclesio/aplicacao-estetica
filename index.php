@@ -17,6 +17,8 @@
         <link href="css/style.css" rel="stylesheet">
         <!-- JQueryUI -->
         <link href="js/jquery-ui.min.css" rel="stylesheet">
+        <link rel="icon" type="image/jpeg" href="img/favicon.ico" />
+
         <script src="js/jquery-3.2.1.min.js" type="text/javascript"></script>
 
     <style type="text/css">

@@ -15,6 +15,7 @@
         <link href="css/bootstrap.min.css" rel="stylesheet">
         <link href="css/style.css" rel="stylesheet">
         <link href="js/jquery-ui.min.css" rel="stylesheet">
+        <link rel="icon" type="image/jpeg" href="img/favicon.ico" />
         <script src="js/jquery-3.2.1.min.js" type="text/javascript"></script>
         <script src="js/bootstrap.min.js" type="text/javascript"></script>
         <script src="ajax/cad_clientes.js"></script>

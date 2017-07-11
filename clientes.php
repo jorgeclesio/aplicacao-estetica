@@ -17,6 +17,7 @@
         <!-- Bootstrap -->
             <link href="css/style.css" rel="stylesheet">
             <link href="js/jquery-ui.min.css" rel="stylesheet">
+            <link rel="icon" type="image/jpeg" href="img/favicon.ico" />
         <!-- JS -->
             <script src="js/jquery-3.2.1.min.js" type="text/javascript"></script>
             <script src="js/mask.js" type="text/javascript"></script>

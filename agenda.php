@@ -11,6 +11,7 @@
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <link href="js/jquery-ui.min.css" rel="stylesheet">
 <link href="css/jquery-ui.min.css" rel="stylesheet">
+<link rel="icon" type="image/jpeg" href="img/favicon.ico" />
 
 
 <script src="js/jquery-3.2.1.min.js"></script>

@@ -1,17 +1,13 @@
 <?php
     include "conexao.php";
-
     session_start();
-
 ?>
 
 <!DOCTYPE html>
-
 <html lang="pt-BR">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        
         <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
         <title>Izabelita Medeiros Estética</title>
          <!-- Bootstrap -->
@@ -22,9 +18,6 @@
        
 
     <style type="text/css">
-   
-      
-
     body {color: gray;
     background: url(img/bg.jpg) no-repeat center top fixed;
                 -webkit-background-size: cover;
@@ -62,16 +55,13 @@
           </div>
     <form action="scripts/cad_comanda.php" method="post">
           <?php 
-  
-              $idcomanda = mysqli_query($conexao,"SELECT MAX(id) FROM comanda");
-              
+                //É pra estar certo aqui
+              $idcomanda = mysqli_query($conexao,"SELECT MAX(id) as id FROM comanda");
               while ($row = mysqli_fetch_array($idcomanda)) {
-               echo $row['id'];
+               echo $row['id']; 
               }
              
           ?>
-
-
         <input type="hidden" name="id_comanda" value="<?php //echo $idcomanda; ?>">
         <div class="row">
           <div class="form-group col-md-8">

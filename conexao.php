@@ -31,7 +31,7 @@ function consulta_banco($query){
 //CONFIGURACOES GERAIS
 date_default_timezone_set('America/Belem');
 
-//Viriáveis globais
+//Viriáveis globais 
 $hora_servidor = date("H:i");
 $data_servidor = date("d/m/Y");
 ?>

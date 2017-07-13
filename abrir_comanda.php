@@ -2,7 +2,6 @@
     require "conexao.php";
     session_start();
 ?>
-
 <!DOCTYPE html>
 <html lang="pt-BR">
     <head>

@@ -2,8 +2,6 @@
 <?php
 			##############CONFIGURAÇÃO DE CONEXÃO##############
 
-
-
 //CONSTANTES QUE DEFINEM A CONEXAO LOCAL
 if($_SERVER['SERVER_NAME'] == 'localhost' || $_SERVER['SERVER_NAME'] == '127.0.0.1'){
 	define('DB_HOST' , 'localhost', true);
@@ -25,7 +23,7 @@ mysqli_select_db($conexao,DB_BASE) or die("nao conectou com o banco");
 
 //FUNCAO PARA FACILITAR CRUD COM O BANCO DE DADOS
 function consulta_banco($query){
-    global $conexao;
+    global $conexao; //pegando a variável que está em escopo global.
     $resultado = mysqli_query($conexao,$query);
     return $resultado;
     
@@ -33,6 +31,7 @@ function consulta_banco($query){
 //CONFIGURACOES GERAIS
 date_default_timezone_set('America/Belem');
 
+//Viriáveis globais
 $hora_servidor = date("H:i");
 $data_servidor = date("d/m/Y");
 ?>

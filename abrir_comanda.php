@@ -64,9 +64,8 @@
           <?php 
   
               $idcomanda = mysqli_query($conexao,"SELECT MAX(id) FROM comanda");
-              
               while ($row = mysqli_fetch_array($idcomanda)) {
-               echo $row['id'];
+               echo $row['MAX(id)'];
               }
              
           ?>

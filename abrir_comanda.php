@@ -56,13 +56,24 @@
 
    <div class="row">
         <div class="col-md-offset-2 col-md-8">
-    <form action="scripts/cad_comanda.php" method="post">
-        <div class="row">
-          <div class="form-group col-md-offset-9 col-md-3">
+        <div class="form-group col-md-offset-9 col-md-3">
                 <label for=""></label>
                 <a href="clientes.php" style="text-decoration: none"><input type="text" class="btn btn-block form-control text-center" value="Novo Cliente"></a>
           </div>
+    <form action="scripts/cad_comanda.php" method="post">
+          <?php 
+  
+              $idcomanda = mysqli_query($conexao,"SELECT MAX(id) FROM comanda");
+              
+              while ($row = mysqli_fetch_array($idcomanda)) {
+               echo $row['id'];
+              }
+             
+          ?>
 
+
+        <input type="hidden" name="id_comanda" value="<?php //echo $idcomanda; ?>">
+        <div class="row">
           <div class="form-group col-md-8">
                   <label for="nome">Nome:</label>
                   <select class="form-control col-md-4" name="nome" id="nome" >
@@ -73,7 +84,7 @@
                     
                               
                         while ($row = mysqli_fetch_array($consulta_cliente)){?>
-                           <option value=" <?php echo $row['idclientes'] ?> "><?php echo $i++ ." - ". $row['cli_nome'] ?></option>    
+                           <option value=" <?php echo $row['idclientes']; ?> "><?php echo $i++ ." - ". $row['cli_nome']; ?></option>    
                          <?php  }?>
               </select>
           </div>
@@ -90,13 +101,13 @@
                 <select class="form-control " name="servico" id="servico" >
                   <option value="">Selecione o Serviço:</option>
                 <?php
-                $consulta_servico = consulta_banco("SELECT serv_nome FROM servicos order by serv_nome");
+                $consulta_servico = consulta_banco("SELECT * FROM servicos order by serv_nome");
                     $i=1;
                   $i=1;
                           
                     while ($row = mysqli_fetch_array($consulta_servico)){?>
-                        <option value=" <?php echo $row['id'] ?> "><?php echo $i++ ." - ". $row['serv_nome'] ?>
-                           </option>    
+                        <option value=" <?php echo $row['id']; ?> "><?php echo $i++ ." - ". $row['serv_nome']; ?>
+                           </option>
                          <?php  }?>
               </select>
          </div>
@@ -107,13 +118,13 @@
           </div>  
           <div class="form-group col-md-4">
                           <label for="colaborador">Profissional:</label>
-                            <select class="form-control " name="colaborador" id="colaborador" >
+                            <select class="form-control " name="colaboradores" id="colaborador" >
                               
                             <?php
-              $consulta = consulta_banco("SELECT col_nome FROM colaboradores order by col_nome");
+              $consulta = consulta_banco("SELECT * FROM colaboradores order by col_nome");
                               $i=1;      
                                 while ($row = mysqli_fetch_array($consulta)){?>
-                                    <option value=" <?php echo $row['idcolaboradores'] ?> "><?php echo $i++ ." - ". $row['col_nome'] ?>
+                                    <option value=" <?php echo $row['idcolaboradores']; ?> "><?php echo $i++ ." - ". $row['col_nome']; ?>
                                        </option>    
                                      <?php  }?>
                           </select>
@@ -125,8 +136,8 @@
                   <option value="">Selecione o Produto:</option>
                 <?php
                   $i=1;
-                  $consulta_produto = consulta_banco("SELECT prod_nome FROM produtos ORDER BY prod_nome");       while ($row = mysqli_fetch_array($consulta_produto)){?>
-                        <option value=" <?php echo $row['id'] ?> "><?php echo $i++ ." - ". $row['prod_nome'] ?>
+                  $consulta_produto = consulta_banco("SELECT * FROM produtos ORDER BY prod_nome");       while ($row = mysqli_fetch_array($consulta_produto)) {?>
+                        <option value=" <?php echo $row['id']; ?> "><?php echo $i++ ." - ". $row['prod_nome']; ?>
                            </option>    
                          <?php  }?>
               </select>

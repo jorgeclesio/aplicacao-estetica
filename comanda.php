@@ -157,10 +157,10 @@
     <div class="modal-dialog">
     
       <!-- Modal conteudo-->
-      <div  style="background: #FFEFD5" class="modal-content">
-        <div class="modal-header">
+      <div  style="background: #FFEFD5;" class="modal-content">
+        <div class="modal-header" style="background: pink; color: #fff">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">PAGAMENTO</h4>
+          <h3 class="modal-title text-center">PAGAMENTO</h3>
         </div>
         <div  class="modal-body">
           <form action="">
@@ -178,17 +178,26 @@
               </div>
               <div class="col-md-6"><label for="cartao">Troco:</label>
                     <input class="form-control" type="text" readonly=""></div>
-              <div class="form-group col-md-6">
+              <div class="form-group col-md-2">
+                <label for="cartao">Parcelas:</label>
+                <select class="btn" name="parc" id="parc">
+                  <option value="1">1x</option>
+                  <option value="2">2x</option>
+                  <option value="3">3x</option>
+                </select>
+              </div>
+              <div class="form-group col-md-4">
                 <label for="cartao">Cartão:</label>
                 <input class="form-control" type="number" placeholder="R$ ">
               </div>
 
               
           </form>
+          <hr>
         </div>
         <div class="col-md-6"></div>
         <div class="modal-footer ">
-          <button type="button" class="btn btn-success btn-block" data-dismiss="modal">Concluir Pagamento</button>
+          <button type="button" class="btn btn-block" style="background: pink;color: #fff" data-dismiss="modal">Concluir Pagamento</button>
         </div>
       </div>
       

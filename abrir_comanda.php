@@ -2,7 +2,6 @@
     require "conexao.php";
     session_start();
 ?>
-
 <!DOCTYPE html>
 <html lang="pt-BR">
     <head>
@@ -15,8 +14,6 @@
         <link href="css/bootstrap.min.css" rel="stylesheet">
         <link href="js/jquery-ui.min.css" rel="stylesheet">
         <script src="js/jquery-3.2.1.min.js" type="text/javascript"></script>
-       
-
     <style type="text/css">
     body {color: gray;
     background: url(img/bg.jpg) no-repeat center top fixed;
@@ -25,8 +22,6 @@
                 -o-background-size: cover;
                 background-size: cover;
             }
-    
-    
     </style>
        
     </head>
@@ -35,10 +30,8 @@
             <?php if($_SESSION['status'] != "logado"){
                 echo "voce precisa estar esta logado";
                 header("Location: login.php");
-                
             }?>
         </p>
-
 <div class="container-fluid">
    <div class="row">
        <div class="text-center" >
@@ -60,7 +53,6 @@
               while ($row = mysqli_fetch_array($idcomanda)) {
                echo $row['id']; //ou usa id ou tem que usar max(id)
               }
-             
           ?>
         <input type="hidden" name="id_comanda" value="<?php //echo $idcomanda; ?>">
         <div class="row">
@@ -71,16 +63,11 @@
                 <?php
                 $i=1;
                 $consulta_cliente = consulta_banco("SELECT * FROM clientes order by cli_nome");
-                    
-                              
                         while ($row = mysqli_fetch_array($consulta_cliente)){?>
                            <option value=" <?php echo $row['idclientes']; ?> "><?php echo $i++ ." - ". $row['cli_nome']; ?></option>    
                          <?php  }?>
               </select>
           </div>
-          
-          
-
           <div class="form-group col-md-4">
                   <label for="data">Data:</label>
                 <input type="text" class="form-control text-center" id="data" name="data" readonly value="<?php  echo date('d-m-Y');?>">
@@ -144,15 +131,9 @@
           </div>
         
       </form>
-            
           </div>  
-
-            
         </div>
    </div>         
 </div>
-        
-    
-      
     </body>
 </html>

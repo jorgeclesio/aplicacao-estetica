@@ -23,7 +23,6 @@ include '../conexao.php';
 	
 
 
-
 	echo $cli_nome .'id do nome <br>'.
 	$id_comanda .'id da comanda <br>'.
 	 $data .'<br>'.

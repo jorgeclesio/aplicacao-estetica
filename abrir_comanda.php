@@ -58,8 +58,8 @@
                 //É pra estar certo aqui
               $idcomanda = mysqli_query($conexao,"SELECT MAX(id) as id FROM comanda");
               while ($row = mysqli_fetch_array($idcomanda)) {
-               echo $row['id']; //ou usa id ou tem que usar max(id)
-              }
+               echo $row['id']; //ou usa id ou tem que usar max(id);
+              };
              
           ?>
         <input type="hidden" name="id_comanda" value="<?php //echo $idcomanda; ?>">

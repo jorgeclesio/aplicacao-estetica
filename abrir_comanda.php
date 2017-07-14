@@ -61,18 +61,16 @@
                 <a href="clientes.php" style="text-decoration: none"><input type="text" class="btn btn-block form-control text-center" value="Novo Cliente"></a>
           </div>
     <form action="scripts/cad_comanda.php" method="post">
-          <?php 
-  
-              $idcomanda = mysqli_query($conexao,"SELECT MAX(id) FROM comanda");
-              
+      
+        <input type="hidden" name="id_comanda" value="<?php 
+
+             $idcomanda = mysqli_query($conexao,"SELECT MAX(id) as id FROM comanda");
               while ($row = mysqli_fetch_array($idcomanda)) {
-               echo $row['id'];
+               $id =  $row['id'] + 1; //ou usa id ou tem que usar max(id)
+               echo $id;
               }
-             
-          ?>
 
-
-        <input type="hidden" name="id_comanda" value="<?php //echo $idcomanda; ?>">
+        ?>">
         <div class="row">
           <div class="form-group col-md-8">
                   <label for="nome">Nome:</label>

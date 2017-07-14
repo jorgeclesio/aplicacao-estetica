@@ -100,13 +100,13 @@
       
         <h3>Comandas Abertas</h3>
         <?php
-      
+
         $consulta = consulta_banco("select comanda.id,comanda.data,clientes.cli_nome,colaboradores.col_nome,serv_comanda.quantidade,servicos.serv_valor,servicos.serv_nome from comanda
             inner join serv_comanda
             inner join colaboradores
             inner join clientes
             inner join servicos
-        on serv_comanda.id_comanda = comanda.id  and comanda.status = 'Aberta' group by comanda.id");
+        on serv_comanda.id_comanda = comanda.id  and comanda.status = 'Aberta' group by comanda.id desc");
              
             //DETALHAMENTO DA COMANDA
             while ($row = mysqli_fetch_array($consulta)) {?>
@@ -125,7 +125,7 @@
                 <?php $valor=''; $valor += $row['serv_valor'];  ?><br><br><br>
             <div class="col-md-12" style="border-bottom: 1px solid gray"></div>
             <div class="col-md-8 text-right "><b>TOTAL</b></div>   
-            <div class="col-md-4"><b><?php echo 'R$ '.number_format($valor, 2, ',', '.');  ?></b></div>
+            <div class="col-md-4"><b><?php echo 'R$ '.number_format($valor, 2, ',', '.') * $row['quantidade'];  ?></b></div>
             
             <div class="col-md-6" ></div>
             <!--CONCLUIR A COMANDA E FAZER O PAGAMENTO-->

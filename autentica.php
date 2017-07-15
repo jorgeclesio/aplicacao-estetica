@@ -7,7 +7,7 @@
 		if ($_POST['logar']) {
 			
 		
-
+				//Gostei do usso dessa função para proteção contra SQL Injection. rs
 			$usuario = mysqli_real_escape_string($conexao, $_POST['usuario']); 
 			$senha = mysqli_real_escape_string($conexao, $_POST['senha']);
 					

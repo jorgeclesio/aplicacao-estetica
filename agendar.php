@@ -8,7 +8,7 @@ if (isset($_POST['submit'])) {
 	$data    = $_POST['data'];
 	$servico = $_POST['servico'];
 	$hora    = $_POST['hora'];
-	$status  = "agendado";
+	$status  = "Agendado";
 	$nome    = $nome . "  -  " . $servico;
 	$start    = $data ." " . $hora;
 	$duracao = $_POST['duracao'];

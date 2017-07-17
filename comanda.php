@@ -108,7 +108,7 @@
             inner join clientes
             inner join servicos
         on serv_comanda.id_servico=servicos.id and comanda.id=serv_comanda.id_comanda and comand.id_colaborador=colaboradores.idcolaboradores and clientes.idclientes=comanda.id_cliente
-        and comanda.status = 'Aberta' group by comanda.id desc");
+       and comanda.status = 'Aberta' group by comanda.id desc");
              
             //DETALHAMENTO DA COMANDA
             while ($row = mysqli_fetch_array($consulta)) {?>

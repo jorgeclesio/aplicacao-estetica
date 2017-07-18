@@ -101,12 +101,19 @@
         <h3>Comandas Abertas</h3>
         <?php
       
-        $consulta = consulta_banco("select comanda.id,comanda.data,clientes.cli_nome,colaboradores.col_nome,serv_comanda.quantidade,servicos.serv_valor,servicos.serv_nome from comanda
+        $consulta = consulta_banco("select * from comanda
             inner join serv_comanda
-            inner join colaboradores
+			inner join prod_comanda
             inner join clientes
             inner join servicos
-        on serv_comanda.id_comanda = comanda.id  and comanda.status = 'Aberta' group by comanda.id");
+            inner join produtos
+		on 
+		 comanda.id=serv_comanda.id_comanda and 
+		 comanda.id=prod_comanda.id_comanda and
+		 comanda.id_cliente=clientes.idclientes and
+		 serv_comanda.id_servico=servicos.id  and
+		 prod_comanda.id_produto=produtos.id and
+          comanda.status = 'Aberta' group by comanda.id desc");
              
             //DETALHAMENTO DA COMANDA
             while ($row = mysqli_fetch_array($consulta)) {?>

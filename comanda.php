@@ -100,31 +100,28 @@
       
         <h3>Comandas Abertas</h3>
         <?php
-
         $consulta = consulta_banco("select * from comanda
-
-        $consulta = consulta_banco("select comanda.id,comanda.data,clientes.cli_nome,colaboradores.col_nome,serv_comanda.quantidade,servicos.serv_valor,servicos.serv_nome 
-        from comanda
             inner join serv_comanda
-			inner join prod_comanda
+      inner join prod_comanda
             inner join clientes
             inner join servicos
             inner join produtos
-		on 
-		 comanda.id_comanda=serv_comanda.id_com and 
-		 comanda.id_comanda=prod_comanda.id_com and
-		 comanda.id_cliente=clientes.idclientes and
-		 serv_comanda.id_servico=servicos.id  and
-		 prod_comanda.id_produto=produtos.id and
+    on 
+     comanda.id_comanda=serv_comanda.id_com and 
+     comanda.id_comanda=prod_comanda.id_com and
+     comanda.id_cliente=clientes.idclientes and
+     serv_comanda.id_servico=servicos.id  and
+     prod_comanda.id_produto=produtos.id and
           comanda.status = 'Aberta' group by comanda.id_comanda desc");
-         on serv_comanda.id_servico=servicos.id and comanda.id=serv_comanda.id_comanda and comand.id_colaborador=colaboradores.idcolaboradores and clientes.idclientes=comanda.id_cliente
-        and comanda.status = 'Aberta' group by comanda.id desc");
-             
             //DETALHAMENTO DA COMANDA
             while ($row = mysqli_fetch_array($consulta)) {?>
         <div class="col-md-12" style="background: #fffAF0; border: 1px solid pink; border-radius: 8px; margin-bottom: 5px">
                 <?php $id = $row['id_comanda']; ?>
-            <div class="col-md-8 text-right"></div><div class="col-md-4 text-right">Comanda N. <b><?php echo $id; ?></b></div>
+            <div class="col-md-8 text-right"></div><div class="col-md-4 text-right">Comanda N. 
+              <b>              
+                <?php echo $id; ?>
+              </b>
+            </div>
             <!--cabeçalho da comanda-->
             <div class="col-md-12">Cliente: <?php echo $row['cli_nome']; ?></div><br><br><br>
             <div class="col-md-6"><u>Serviços:</u></div>
@@ -169,7 +166,10 @@
             <div class="col-md-6" ></div>
             <!--CONCLUIR A COMANDA E FAZER O PAGAMENTO-->
             <div class="col-md-6 text-right">
-                <button type="button" style="margin: 5px;" class="btn btn-success" data-toggle="modal" data-target="#myModal">PAGAR
+                <button type="button" style="margin: 5px;" class="btn btn-sm btn-success" data-toggle="modal" data-target="#myModal">PAGAR
+                </button>
+
+                <button type="button" style="margin: 5px;" class="btn btn-sm btn-warning" data-toggle="modal" data-target="#myModal">EDITAR
                 </button>
             </div>
              
@@ -181,11 +181,6 @@
 
    </div>         
   
-
-
-
-
-
 
   <!-- MODAL DE PAGAMENTOS -->
     <div class="container">
@@ -203,14 +198,18 @@
         </div>
         <div  class="modal-body">
           <form action="">
-              <div class="col-md-8 text-right"></div><div class="col-md-4 text-right">Comanda N. <b><?php echo $id; ?></b></div>
+              <div class="col-md-8 text-right"></div><div class="col-md-4 text-right">Comanda N. <b>
+                <?php 
+                  echo $id; 
+                ?></b>
+              </div>
               
               <hr>
                             
               <div class="col-md-6"></div>
               <div></div><hr>
               <div class="col-md-6"><label for="total">Valor a Pagar:</label>
-                  <input class="form-control" type="text" readonly=""  value="<?php echo 'R$ '.number_format($valor, 2, ',', '.');  ?>"></div>
+                  <input class="form-control" type="text" readonly=""  value="<?php echo 'R$ '.number_format($total, 2, ',', '.');  ?>"></div>
               <div class="form-group col-md-6">
                 <label for="dinheiro"><span>Dinheiro</span></label>
                 <input id="input-dinheiro" class="form-control" type="number" autofocus="" placeholder="R$ ">

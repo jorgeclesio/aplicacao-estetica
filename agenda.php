@@ -12,6 +12,7 @@
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <link href="js/jquery-ui.min.css" rel="stylesheet">
 <link href="css/jquery-ui.min.css" rel="stylesheet">
+
 <link rel="icon" type="image/jpeg" href="img/favicon.ico" />
 
 
@@ -19,15 +20,7 @@
 <script src="js/bootstrap.min.js"></script>
 <script src='lib/moment.min.js'></script>
 <script src='js/fullcalendar.min.js'></script>
-<style>
-	 body {
-    background: url(img/bg.jpg) no-repeat center top fixed;
-                -webkit-background-size: cover;
-                -moz-background-size: cover;
-                -o-background-size: cover;
-                background-size: cover;
-            }
-</style>
+
 <script>
 
 	$(document).ready(function() {
@@ -174,7 +167,7 @@
 		       </div>
 
 		       <div class="text-right col-md-6">
-					<button style="background: #B0C4DE;border:0"  type="button" class="btn" data-toggle="modal" data-target="#form-agenda">	Fazer um agendamento
+					<button style="background: pink;color: #fff;border:0"  type="button" class="btn" data-toggle="modal" data-target="#form-agenda">	Fazer um agendamento
 					</button>
 				</div><br><br>
 				
@@ -199,7 +192,7 @@
 <div id="form-agenda" class="modal fade"  role="dialog">
   <div class="modal-dialog">
     <div  style="background: #FFEFD5"  class="modal-content">
-      <div class="modal-header">
+      <div class="modal-header" style="background: pink; color: #fff">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
         <h4 class="modal-title"><h1 align="center">Agendamento</h1></h4>
       </div>
@@ -245,7 +238,7 @@
 				  
 				  
 				  
-				  		<button type="submit" name="submit" class="btn btn-block">Salvar</button>
+				  		<button type="submit" name="submit" style="background: pink;color: #fff" class="btn btn-block">Salvar</button>
 				  
 			</form>
 			<div class="modal-footer">
@@ -255,9 +248,6 @@
 	</div>
   </div>
 </div>
-
-
-
 
 </div>
 </body>

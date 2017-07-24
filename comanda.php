@@ -48,13 +48,18 @@
        
 
 <div class="container-fluid fundo">
-   <div class="row">
-       <div class="text-center" >
-       <h1 style="">Izabelita Medeiros Estética</h1>
+  <div class="row" style="background: pink">
+        <div col class="col-md-offset-2 col-md-8 text-center" style="background: pink; ">
+            <div>
+                  <a href="index.php"><img src="img/logo_pq.png" alt=""></a>
+            </div>
        </div>
-   </div>
+    </div>
+   
 <br><br>
    <div class="principal">
+         <h1 class="text-center" style="margin-top: 0;padding-top: 0;;color: #888">Cadastro de Produtos</h1>
+
     <div class="row">
         <div class="col-md-offset-3 col-md-6">
         

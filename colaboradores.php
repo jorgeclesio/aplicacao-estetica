@@ -39,15 +39,16 @@
 
 <div class="container-fluid">
    <div class="row" style="background: pink">
-       <div col class="col-md-offset-2 col-md-8 text-center" style="background: pink;height: 80px;line-height: 80px">
-       
-       <div style="background-image: url('img/logo_pq.png');background-repeat: no-repeat;"><h1 style="margin: 0;line-height: 80px;color: #fff">Cadastro de Colaboradores</h1></div>
-       
+       <div col class="col-md-offset-2 col-md-8 text-center" style="background: pink; ">
+            <div>
+                  <a href="index.php"><img src="img/logo_pq.png" alt=""></a>
+            </div>
+       </div>
        </div>
    </div>
 <br><br>
    <div class="principal">
-
+    <h1 class="text-center" style="margin-top: 0;padding-top: 0;;color: #888">Cadastro de Colaboradores</h1>
         <p class="text-center text-danger">
             <?php if($_SESSION['status'] != "logado"){
                 echo "voce precisa estar esta logado";

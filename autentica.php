@@ -4,7 +4,7 @@
 
 
 
-		if ($_POST['logar']) {
+		//if ($_POST['entrar']) {
 			
 		
 
@@ -29,6 +29,6 @@
 			$_SESSION['logar'] = "Voce precisa estar logado!";
 			header("Location: login.php");
 		}
-	}
+	//}
 	
 ?>

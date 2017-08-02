@@ -2,10 +2,8 @@
 include '../conexao.php';
 ?>
 
-
-
 <?php
-if ($_POST["salvar"]) {
+if (isset($_POST["salvar"])) {
 
 		$nome         = $_POST['nome'];
 		$descricao    = $_POST['descricao'];
@@ -14,8 +12,10 @@ if ($_POST["salvar"]) {
 		$estoque      = $_POST['estoque'];
 	
 
-	consulta_banco("INSERT INTO servicos (prod_nome,prod_descricao,prod_preco_custo,prod_preco_custo) 
-		VALUES ('$nome','$descricao','$preco_custo','$preco_venda','$estoque')") or die("erro ao inserir");
+	
+
+	consulta_banco("INSERT INTO produtos (prod_nome, prod_descricao, prod_preco_custo, prod_preco_venda, prod_estoque) 
+		VALUES ('$nome', '$descricao', '$preco_custo', '$preco_venda', '$estoque')") or die("erro ao inserir");
 
 	  echo "<script> alert('Cadastro realizado');</script>";
       echo "<SCRIPT> location.href='../index.php' </SCRIPT>"; 

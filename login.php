@@ -12,8 +12,9 @@ session_start();
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/login.css" rel="stylesheet">
     <link href="js/jquery-ui.min.css" rel="stylesheet">
-     <link rel="icon" type="image/jpeg" href="img/favicon.ico" />
+    <link rel="icon" type="image/jpeg" href="img/favicon.ico" />
     <script src="js/jquery-3.2.1.min.js" type="text/javascript"></script>
 </head>
 
@@ -27,29 +28,31 @@ session_start();
 	</div>
 
 	<br><br>
+	<div class="col-md-offset-3 col-md-6">
 
 	<form action="autentica.php" method="post">
-			<div class="text-center log_label">
-				<label style="" for="usuario">Usuário:</label>
+			<div class=" log_label">
+				<label style="padding-left:5% " for="usuario">Usuário:</label>
 			</div>
 			
-			<div class="text-center">
-				<input id="usuario" name="usuario">
+			<div style="height: 30px;line-height: 30px;font-size: 2em" class="text-center">
+				<input class="text-center btn-block" style="letter-spacing:10px;color: pink" id="usuario" name="usuario">
 			</div><br>
 			
-			<div class="text-center log_label">
-				<label for="senha">Senha:</label>
+			<div class=" log_label">
+				<label style="padding-left:5% " for="senha">Senha:</label>
 			</div>
 			
-			<div class="text-center">
-				<input id="senha"  type="password" name="senha">
+			<div style="height: 30px;line-height: 30px;font-size: 2em"  class="">
+				<input style="height:40px;color: pink"   class="text-center btn-block" style="letter-spacing:10px" id="senha"  type="password" name="senha">
 			</div><br>
 
-			<div style="height: 60px;line-height: 60px;font-size: 3em" class="text-center">
-				<input height="40px" id="btn-submit" style="width: 60%;" class="btn" type="submit" value="Entrar" name="logar">
+			<div style="height: 30px;line-height: 30px;font-size: 2em" class="text-center">
+				<input style="font-size: 20px"  height="40px" id="btn-submit"  class="btn btn-block" type="submit" value="Entrar" name="logar">
 			
 			</div>
 	</form>
+	</div>
 
 		<p class="text-center text-danger">
 			<?php if(isset($_SESSION['loginErro'])){

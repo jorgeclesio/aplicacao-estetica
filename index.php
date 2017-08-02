@@ -57,7 +57,7 @@
 <div class="container-fluid fundo">
    <div class="row">
        <div class="text-center col-md-offset-2 col-md-8" >
-       <h1 style=""><img src="img/logo.png" width="400px" align="left" alt=""></h1>
+       <h1 style=""><img src="img/logo.png" class="img-responsive"" width="400px" align="left" alt=""></h1>
        </div>
    </div>
 <br><br>

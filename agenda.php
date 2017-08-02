@@ -133,6 +133,7 @@
 
 	body {
 		margin: 40px 10px;
+		color:gray;
 		background: #FFC0CB;
 		padding: 0;
 		font-family: "Lucida Grande",Helvetica,Arial,Verdana,sans-serif;
@@ -167,7 +168,7 @@
 		       </div>
 
 		       <div class="text-right col-md-6">
-					<button style="background: pink;color: #fff;border:0"  type="button" class="btn" data-toggle="modal" data-target="#form-agenda">	Fazer um agendamento
+					<button style="background: pink;color: #fff;border:0"  type="button" class="btn" data-toggle="modal" data-target="#form-agenda">	Fazer um Agendamento
 					</button>
 				</div><br><br>
 				
@@ -215,7 +216,9 @@
                   
                   			while ($row = mysqli_fetch_array($result)){?>
                     
-              <option value=" <?php echo $row['serv_nome']; ?> "><?php echo $row['serv_nome']; ?></option>
+              <option value=" <?php echo $row['serv_nome']; ?> "><?php 
+             
+              	 echo  $row['serv_nome']; ?></option>
 
                 <?php  }?>
 				    </select>
@@ -231,7 +234,7 @@
 				    	<option value="15">1 hora e meia</option>
 				    	<option value="2">2 horas</option>
 				    	<option value="25">2 hora e meia</option>
-				    	<option value="3">3 hora</option>
+				    	<option value="3">3 horas</option>
 				    	
 				    </select>
 				  </div>
@@ -242,7 +245,7 @@
 				  
 			</form>
 			<div class="modal-footer">
-			      <p class="text-center">Izabelita Medeiros Estética</p>
+			      <p class="text-center" style="color: gray">Izabelita Medeiros Estética</p>
 	        </div>
       </div> 
 	</div>

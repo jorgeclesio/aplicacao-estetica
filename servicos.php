@@ -71,8 +71,8 @@
     <div class="text-right col-md-offset-2 col-md-8">
       <a href="index.php">Voltar</a></div>
     <div class="col-md-offset-2 col-md-8">
-      <form action="scripts/cad_servicos.php" method="post">
-          <div class="form-group col-md-12">
+      <form action="scripts/cadastros.php" method="post">
+          <div class="form-group col-md-9">
                   <label for="nome">Nome do Serviço:</label>
                   <input type="text" class="form-control text-uppercase"  id="nome" name="nome" placeholder="" autofocus="" required>
           </div>
@@ -82,32 +82,10 @@
               <input type="number" class="form-control" id="preco" name="preco" placeholder="R$" required=" ">
           </div>
 
-          <div class="form-group col-md-3">
-              <label for="comissao">Comissão:</label>
-              <input type="number" class="form-control" id="comissao" name="comissao" placeholder="%" >
-          </div>
           
-          <div class="form-group col-md-6">
-              <label for="profissional">Profissional:</label>
-              <select class="form-control text-uppercase col-md-4" name="profissional" id="profissional" >
-                  <option value="">Selecione o Profissional</option>
-
-                <?php
-
-               $result = consulta_banco("SELECT col_nome FROM colaboradores");
-                  
-                  while ($row = mysqli_fetch_array($result)){?>
-                    
-                    <option value=" <?php echo $row['col_nome']; ?> "><?php echo $row['col_nome']; ?></option>
-
-                <?php  }?>
-
-                  
-                </select>
-          </div>
 
           <div class="form-group">
-              <input style="background: pink;color: #fff" type="submit" name="salvar" class="btn btn-block" value="Salvar" >
+              <input style="background: pink;color: #fff" type="submit" name="cad_servico" class="btn btn-block" value="Salvar" >
               
           </div>
       </form>

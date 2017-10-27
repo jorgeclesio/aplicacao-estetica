@@ -17,14 +17,34 @@
          <!-- Bootstrap -->
          <link rel="stylesheet" href="js/jquery-3.2.1.min.js">
         <link href="css/bootstrap.min.css" rel="stylesheet">
-        <link href="js/jquery-ui.min.css" rel="stylesheet">
-        <script src="js/jquery-3.2.1.min.js" type="text/javascript"></script>
+        
+        <link rel="stylesheet" href="jquery-ui/jquery-ui.css">
+        
+        <script src="js/jquery-3.2.1.min.js"></script>
+        <script src="jquery-ui/jquery-ui.js"></script>
        
 
-    <style type="text/css">
    
-      
+   <script>
+        $( function() {
+         
+          $( "#nome" ).autocomplete({
+                source: function(request,response){
+                  $.ajax({
+                    url: 'ajax/clientes.php',
+                    dataType: 'json',
+                    data: {q:request.term},
+                    success: function(data){
+                        response(data);
+                    }
 
+                  });       
+                }
+            });
+        } );
+  </script>
+      
+  <style type="text/css">
     body {color: gray;
     background: url(img/bg.jpg) no-repeat center top fixed;
                 -webkit-background-size: cover;
@@ -45,11 +65,17 @@
                 
             }?>
         </p>
-
-<div class="container-fluid">
-   <div class="row">
+<div class="row" style="background: pink">
+      <div col class="col-md-offset-2 col-md-8 text-center" style="background: pink; ">
+          <div>
+              <a href="index.php"><img src="img/logo_pq.png" alt=""></a>
+           </div>
+      </div>
+  </div>
+<div class="container">
+   <div class="row"><br>
        <div class="text-center" >
-       <h1 style="">Comanda</h1>
+       <h1 style="">Nova Comanda</h1>
        </div>
    </div>
         <br><br>
@@ -64,9 +90,13 @@
       
         <input type="hidden" name="id_comanda" value="<?php 
 
-             $idcomanda = mysqli_query($conexao,"SELECT MAX(id_comand) as id FROM comanda");
+             $idcomanda = mysqli_query($conexao,"SELECT MAX(id_comanda) as id FROM comanda");
+
+
               while ($row = mysqli_fetch_array($idcomanda)) {
+
                $id =  $row['id'] + 1; //ou usa id ou tem que usar max(id)
+
                echo $id;
               }
 
@@ -74,17 +104,8 @@
         <div class="row">
           <div class="form-group col-md-8">
                   <label for="nome">Nome:</label>
-                  <select class="form-control col-md-4" name="nome" id="nome" >
-                  <option value="">Selecione o Cliente</option>
-                <?php
-                $i=1;
-                $consulta_cliente = consulta_banco("SELECT * FROM clientes order by cli_nome");
-                    
-                              
-                        while ($row = mysqli_fetch_array($consulta_cliente)){?>
-                           <option value=" <?php echo $row['idclientes']; ?> "><?php echo $i++ ." - ". $row['cli_nome']; ?></option>    
-                         <?php  }?>
-              </select>
+                  <input class="form-control col-md-4" type="text" name="nome" id="nome">
+                  
           </div>
           
           
@@ -110,11 +131,8 @@
               </select>
          </div>
 
-         <div class="form-group col-md-2">
-                  <label for="qtd_servico">Quantidade:</label>
-                <input type="text" class="form-control text-center" id="qtd_servico" name="qtd_servico">
-          </div>  
-          <div class="form-group col-md-4">
+           
+          <div class="form-group col-md-6">
                           <label for="colaborador">Profissional:</label>
                             <select class="form-control " name="colaboradores" id="colaborador" >
                               
@@ -128,23 +146,7 @@
                           </select>
             </div>
 
-            <div class="form-group col-md-6">
-              <label for="produto">Home Care:</label>
-                <select class="form-control " name="produto" id="produto" >
-                  <option value="">Selecione o Produto:</option>
-                <?php
-                  $i=1;
-                  $consulta_produto = consulta_banco("SELECT * FROM produtos ORDER BY prod_nome");       while ($row = mysqli_fetch_array($consulta_produto)) {?>
-                        <option value=" <?php echo $row['id']; ?> "><?php echo $i++ ." - ". $row['prod_nome']; ?>
-                           </option>    
-                         <?php  }?>
-              </select>
-         </div> 
-
-         <div class="form-group col-md-2">
-                  <label for="qtd_produto">Quantidade:</label>
-                <input  type="text" class="form-control text-center" id="qtd_produto" name="qtd_produto">
-          </div> 
+            
         </div>
        
           <div class="form-group">

@@ -60,7 +60,7 @@
     <div class="text-right col-md-offset-2 col-md-8">
       <a href="index.php">Voltar</a></div>
     <div class="col-md-offset-2 col-md-8 ">
-      <form action="scripts/cad_clientes.php" method="post">
+      <form action="scripts/cadastros.php" method="post">
           <div class="form-group col-md-12 ">
                   <label for="nome">Nome:</label>
                   <input type="text" class="form-control text-uppercase"  id="nome" name="nome" placeholder="" autofocus="" required>
@@ -73,18 +73,18 @@
 
           <div class="form-group col-md-4">
               <label for="cpf">CPF:</label>
-              <input type="text" class="form-control" id="cpf" name="cpf" placeholder="" required="">
+              <input type="text" class="form-control" id="cpf" name="cpf" placeholder="" >
           </div>
 
 
           <div class="form-group col-md-4">
               <label for="aniversario">Aniversário:</label>
-              <input type="date" class="form-control" id="aniversario" name="aniversario" placeholder="" required="">
+              <input type="date" class="form-control" id="aniversario" name="aniversario" placeholder="" >
           </div>
 
           <div class="form-group col-md-9">
               <label for="email">Email:</label>
-              <input type="email" class="form-control" id="email" name="email" placeholder="" required="">
+              <input type="email" class="form-control" id="email" name="email" placeholder="" >
           </div>
 
           <div class="form-group col-md-3">
@@ -98,25 +98,25 @@
 
           <div class="form-group col-md-12">
               <label for="endereco">Endereço:</label>
-              <input type="text" class="form-control text-uppercase" id="endereco" name="endereco" placeholder="" required="">
+              <input type="text" class="form-control text-uppercase" id="endereco" name="endereco" placeholder="" >
           </div>
 
           <div class="form-group col-md-5">
               <label for="bairro">Bairro:</label>
-              <input type="text" class="form-control text-uppercase" id="bairro" name="bairro" placeholder="" required="">
+              <input type="text" class="form-control text-uppercase" id="bairro" name="bairro" placeholder="" >
           </div>
 
           <div class="form-group col-md-5">
               <label for="cidade">Cidade:</label>
-              <input type="text" class="form-control text-uppercase" id="cidade" name="cidade" placeholder="" required="">
+              <input type="text" class="form-control text-uppercase" id="cidade" name="cidade" placeholder="" >
           </div>
 
           <div class="form-group col-md-2">
               <label for="estado">Estado:</label>
-              <input type="text" class="form-control text-uppercase" id="estado" name="estado" placeholder="" required="">
+              <input type="text" class="form-control text-uppercase" id="estado" name="estado" placeholder="" >
           </div>
           <div class="form-group">
-                 <input style="background: pink; color: #fff" type="submit" name="submit" class="btn btn-block" value="Salvar" >
+                 <input style="background: pink; color: #fff" type="submit" name="cad_cliente" class="btn btn-block" value="Salvar" >
               
           </div>
       </form>

@@ -26,6 +26,7 @@ input[type=text], input[type=password] {
     margin: 8px 0;
     display: inline-block;
     border: 1px solid #ccc;
+    border-radius: 5px;
     box-sizing: border-box;
 }
 
@@ -35,6 +36,7 @@ button {
     padding: 14px 20px;
     margin: 8px 0;
     border: none;
+    border-radius: 5px;
     cursor: pointer;
     width: 100%;
 }
@@ -84,11 +86,13 @@ span.psw {
 
 <body style="background: #FFC0CB;margin: 0">
 	<form action="autentica.php" method="post">
-	  	<div class="imgcontainer">
-	    	<img src="img/logo.png" alt="Avatar" class="avatar">
-	  	</div>
+	  	
 
 		<div class="container">
+			<div style="padding-bottom: 30px" class="col-md-offset-4 col-md-4 ">
+		    	<img class="img-responsive" src="img/logo.png" alt="Izabelita Medeiros" class="avatar">
+		  	</div>
+		  	
 		    <div class="col-md-offset-3 col-md-6">
 			    <label style="color: #47184c"><b>Usuário</b></label>
 			    <input type="text" placeholder="Digite o Usuário" name="usuario" required>

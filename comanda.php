@@ -48,33 +48,22 @@
     </head>
 <body>
 
+
 <div class="container-fluid fundo">
   <div class="row" style="background: pink">
-        <div col class="col-md-offset-2 col-md-8 text-center" style="background: pink; ">
-            <div>
-                  <a href="index.php"><img src="img/logo_pq.png" alt=""></a>
-            </div>
-       </div>
-    </div>
+      <div col class="col-md-offset-2 col-md-8 text-center" style="background: pink; ">
+          <div>
+              <a href="index.php"><img src="img/logo_pq.png" alt=""></a>
+           </div>
+      </div>
+  </div>
    
 <br><br>
-<div class="principal">
+  <div class="principal container">
          <h1 class="text-center" style="margin-top: 0;padding-top: 0;;color: #888">Comanda</h1>
-
     <div class="row">
         <div class="col-md-offset-3 col-md-6">
-        
-            <div class="col-md-6">
-                <span>Exibir:</span>
-                <div role="group" aria-label="...">
-                    <ul  class="nav nav-tabs">
-                      <li> <a data-toggle="tab" href="#todas"  >Todas</a></li>
-                      <li> <a data-toggle="tab" href="#aberta" class="active">Abertas</a></li>
-                      <li> <a data-toggle="tab" href="#fechada">Fechadas</a></li>
-                    </ul>
-                </div>
-                
-            </div>
+            
 
 <!-- ################ Nova Comanda ################ -->
             <div class="col-md-6">
@@ -85,167 +74,106 @@
             </div>
 
             <br><br><br>
-			<div id="busca" style="display: none">
-				<div class="col-md-12">
-					<p>Filtrar Período:</p> 
-				</div>
-           
-					<form class="form-inline" action="">
-						
-						<div class="form-group">
-							<span>De:</span> 
-							<input class="btn" type="date" name="data_inicio" id="inicio">
-						</div>
+			
 
-						<div class="form-group">
-							<span> Até:</span>
-							<input class="btn" type="date" name="data_final" id="fim">
-						</div>
-							<button class="btn" type="submit" name="buscar" value="Buscar">Buscar</button>
-						
-					</form>
-				<br>
-			</div>
+    	       <div class="tab-content">
 
-	<div class="tab-content">
+    <!-- ################Lista as Comandas com Status "Aberta"################ -->
+    		    <div id="aberta" class="tab-pane fade in active">
+    			       <h3>Comandas Abertas</h3>
+                <div>
 
-<!-- ################Lista as Comandas com Status "Aberta"################ -->
-		<div id="aberta" class="tab-pane fade in active">
-			<h3>Comandas Abertas</h3>
-				<?php
-				$consulta = consulta_banco("select * from comanda
-					inner join serv_comanda
-			  inner join prod_comanda
-					inner join clientes
-					inner join servicos
-					inner join produtos
-			on 
-			 comanda.id_comanda=serv_comanda.id_com and 
-			 comanda.id_comanda=prod_comanda.id_com and
-			 comanda.id_cliente=clientes.idclientes and
-			 serv_comanda.id_servico=servicos.id  and
-			 prod_comanda.id_produto=produtos.id and
-				  comanda.status = 'Aberta' group by comanda.id_comanda desc");
-            //DETALHAMENTO DA COMANDA
-			while ($row = mysqli_fetch_array($consulta)) { ?>
-		  <div class="col-md-12" style="background: #fffAF0; border: 1px solid pink; border-radius: 8px; margin-bottom: 5px">
-						<?php $id = $row['id_comanda']; ?>
-		  <div class="col-md-8 text-right"></div><div class="col-md-4 text-right">Comanda N. 
-					  <b>              
-						<?php echo $id; ?>
-					  </b>
-		  </div>
-            <!--cabeçalho da comanda-->
-				<div class="col-md-12">Cliente: <?php echo $row['cli_nome']; ?></div><br><br><br>
-				<div class="col-md-6"><u>Serviços:</u></div>
-				<div class="col-md-2">Qtd:</div>
-				<div class="col-md-4">Valor:</div>
-  <!--resultados da comanda-->
-				<div class="col-md-6"><?php echo $row['serv_nome']; ?></div>
-				<div class="col-md-2"><?php echo $row['qtd_serv']; ?></div>
-				<div class="col-md-4">
-              <?php 
-                  $valor_s = $row['serv_valor'] * $row['qtd_serv'];
-                  echo 'R$ '.number_format($valor_s, 2, ',', '.');  
-              ?> 
-  </div>
-                <br><br><br>
+                  <?php 
+                      $sql_comanda = 'select * from comanda c inner join serv_comanda s on c.id_comanda = s.id_com where c.status="Aberta" group by c.id_comanda   order by c.id_comanda desc   ';
+                      $exec_comanda = mysqli_query($conexao, $sql_comanda);
 
+                      while ($linha = mysqli_fetch_array($exec_comanda)) {?>
+                    <div class="row" style="border: 1px solid #FFC0CB; border-radius: 3px;background: #fff;margin-bottom: 10px; padding: 5px">
+                        <div class="col-md-12 text-left"><span class="text-left">Comanda: <?php $id_com = $linha['id_comanda']; echo $id_com ."<br>"; ?></span> 
+                        </div>
+                        <div class="text-center">Izabelita Medeiros Estetica</div>
+                        <div class="text-center">CNPJ: 000.000.000/0001-00</div>
+                            <hr>
+                        <div>
+                      
+                            <div class="col-md-6"> Cliente: <strong>
+                            <?php  
+                              $id_cli = $linha['id_cliente'];
+                              $sql_cliente = "select * from clientes where idclientes = $id_cli";
+                              $exec_cliente = mysqli_query($conexao, $sql_cliente);
+                              $cliente = mysqli_fetch_array($exec_cliente);
+                                echo strtoupper($cliente['cli_nome'])."<br>"; 
+                              ?> </strong>
+                            </div>
 
-  <div class="col-md-6"><u>Produtos:</u></div>
-  <div class="col-md-2">Qtd:</div>
-  <div class="col-md-4">Valor:</div>
-  <!--resultados da comanda-->
-  <div class="col-md-6"><?php echo $row['prod_nome']; ?></div>
-  <div class="col-md-2"><?php echo $row['qtd_prod']; ?></div>
-  <div class="col-md-4">
-              <?php 
+                            <div class="col-md-6 text-right"> Id Col.: 
+                            <?php  
+                              $id_col = $linha['id_colaborador'];
+                              $sql_col = "select * from colaboradores where idcolaboradores = $id_col";
+                              $exec_col = mysqli_query($conexao, $sql_col);
+                              $col = mysqli_fetch_array($exec_col);
+                                echo strtoupper($col['idcolaboradores'])."<br>"; 
+                              ?> 
+                            </div>
+                        
+                        <table class="table">
+                          <thead>
+                            <tr>
+                              <th> - </th>
+                              <th>Serviços</th>
+                              <th>valor</th>
+                            </tr>
+                          </thead>
 
-                  $valor_p = $row['prod_preco_venda'] * $row['qtd_prod'];
-                  echo 'R$ '.number_format($valor_s, 2, ',', '.');  
+                          <?php 
+                      $serv_comanda = "SELECT servicos.serv_nome as nome, servicos.serv_valor as total  FROM comanda 
+                                        join servicos 
+                                        join serv_comanda 
+                                  on comanda.id_comanda = serv_comanda.id_com and serv_comanda.id_servico = servicos.id
+                                        WHERE id_com = $id_com order by comanda.id_comanda desc";
+                      $exec_serv_comanda = mysqli_query($conexao, $serv_comanda);
+                      $servico =  mysqli_fetch_array($exec_serv_comanda);
+       
+                                echo "<tr>
+                                        <td>1</td>
+                                        <td>".$servico['nome']."</td>
+                                        <td>".$servico['total']."</td>
+                                      </tr>";
+                      
+                      ?>
+
+                        </table>
+
+                      <div class="col-md-12 text-right"><strong> Total: 
+                     
+                         <?php    echo 'R$  ' . number_format($linha['total'], 2, ',', '.')."<br>";; ?> </strong>
+                      </div>
+
+                      
+                      
+
+                        </div>   
+                    
+                        <div> 
+                              <button type="button" style="margin: 5px;" class="btn btn-sm btn-success" data-toggle="modal" data-target="#myModal">PAGAR
+                              </button>
+
+                              <button type="button" style="margin: 5px;" class="btn btn-sm btn-warning" data-toggle="modal" data-target="#myModal">EDITAR
+                              </button>
+                        </div> 
+                    </div>
+                          
+                      <?php } ?>
+                   
+                </div>
+
                   
-              ?>
-              
-    </div><br><br><br>
-  <div class="col-md-12" style="border-bottom: 1px solid gray"></div>
-  <div class="col-md-8 text-right "><b>TOTAL</b></div>   
-            <div class="col-md-4"><b>
-              <?php 
-                    $total = $valor_p + $valor_s;
-                echo 'R$ '.number_format($total, 2, ',', '.'); 
-
-               ?></b>
-            </div>
-            
-  <div class="col-md-6" ></div>
-            <!--CONCLUIR A COMANDA E FAZER O PAGAMENTO-->
-		<div class="col-md-6 text-right">
-                <button type="button" style="margin: 5px;" class="btn btn-sm btn-success" data-toggle="modal" data-target="#myModal">PAGAR
-                </button>
-
-                <button type="button" style="margin: 5px;" class="btn btn-sm btn-warning" data-toggle="modal" data-target="#myModal">EDITAR
-                </button>
-        </div>
-             
-    </div> 
-            <?php }  ?>
-		</div><!--fim div aberta -->
-  
-<!-- ################Lista as Comandas com Status "Fechada"################ -->
-  <div id="fechada" class="tab-pane fade">
-        <h3>Comandas Fechadas</h3>
-      
-    <?php 
-      $consulta_comanda = "SELECT * FROM comanda INNER JOIN serv_comanda INNER JOIN servicos INNER JOIN clientes
-        on comanda.id_comanda = serv_comanda.id_com and
-           serv_comanda.id_servico = servicos.id and 
-           comanda.id_cliente = clientes.idclientes
-        where comanda.status = 'Fechada' group by comanda.id_comanda desc";
-      $res_comanda = mysqli_query($conexao, $consulta_comanda);
-
-      while ($linha = mysqli_fetch_array($res_comanda)) {?>
-<div class="col-md-12" style="background: #fffAF0; border: 1px solid pink; border-radius: 8px; margin-bottom: 5px">
-  <?php $id = $linha['id_comanda']; ?>
-  <div class="col-md-8 text-right"></div><div class="col-md-4 text-right">Comanda N. 
-              <b>              
-                <?php echo $id; ?>
-              </b>
-  </div>
-
-  
-        <!--cabeçalho da comanda-->
-  <div class="col-md-12">Cliente: <?php echo $linha['cli_nome']; ?></div><br><br><br>
-  <div class="col-md-6"><u>Serviços:</u></div>
-  <div class="col-md-2">Qtd:</div>
-  <div class="col-md-4">Valor:</div>
-  <!--resultados da comanda-->
-  <div class="col-md-6"><?php echo $linha['serv_nome']; ?></div>
-  <div class="col-md-2"><?php echo $linha['qtd_serv']; ?></div>
-  <div class="col-md-4">
-              <?php 
-                  $valor_s = $linha['serv_valor'] * $linha['qtd_serv'];
-                  echo 'R$ '.number_format($valor_s, 2, ',', '.');  
-              ?> 
-  </div><br><br><br>
-</div> <!-- fim da div de resultados da comanda -->   
-
-
-      
-      <?php } ?>
+            </div><br><br><br>
+     
     
-  </div><!--fim div fechada -->
-
-<!-- ################Lista Todas as Comandas################ -->
-  <div id="todas" class="tab-pane fade">
-    <h3>Todas as Comandas</h3>
-    <p>lista todas as comndas</p>
-  </div>
-
-	</div><!--fim div content -->
-
-        </div>
-   </div>         
-  
+            </div> <!--fim div aberta -->
+		      </div>
+      </div>
 
   <!-- ################MODAL DE PAGAMENTOS################ -->
     <div class="container">
@@ -265,7 +193,7 @@
           <form action="">
               <div class="col-md-8 text-right"></div><div class="col-md-4 text-right">Comanda N. <b>
                 <?php 
-                  echo $id; 
+                  echo $id_com; 
                 ?></b>
               </div>
               
@@ -273,16 +201,14 @@
                             
               <div class="col-md-6"></div>
               <div></div><hr>
-              <div class="col-md-6"><label for="total">Valor a Pagar:</label>
-                  <input class="form-control" type="text" readonly=""  value="<?php echo 'R$ '.number_format($total, 2, ',', '.');  ?>"></div>
+              
               <div class="form-group col-md-6">
                 <label for="dinheiro"><span>Dinheiro</span></label>
                 <input id="input-dinheiro" class="form-control" type="number" autofocus="" placeholder="R$ ">
               </div>
-              <div class="col-md-6"><label for="cartao">Troco:</label>
-                    <input class="form-control" type="text" readonly=""></div>
+
               <div class="form-group col-md-2">
-                <label for="cartao">Parcelas:</label>
+                <label for="cartao"></label>
                 <select class="btn" name="parc" id="parc">
                   <option value="1">1x</option>
                   <option value="2">2x</option>
@@ -293,12 +219,18 @@
                 <label for="cartao">Cartão:</label>
                 <input class="form-control" type="number" placeholder="R$ ">
               </div>
-
+              <div class="col-md-6"><label for="total">Valor a Pagar:</label>
+                  <input class="form-control" type="text" readonly=""  value="<?php echo 'R$ '.number_format($total, 2, ',', '.');  ?>">
+              </div>
+              <div class="col-md-6"><label for="cartao">Troco:</label>
+                    <input class="form-control" type="text" readonly="">
+              </div>
+                <br><br><br>
               
           </form>
           <hr>
         </div>
-        <div class="col-md-6"></div>
+        <div class="col-md-6" style="margin-top: 10px"></div>
         <div class="modal-footer ">
           <button type="button" class="btn btn-block" style="background: pink;color: #fff" data-dismiss="modal">Concluir Pagamento</button>
         </div>

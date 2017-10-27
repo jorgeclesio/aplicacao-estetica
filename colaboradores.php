@@ -61,7 +61,7 @@
     <div class="text-right col-md-offset-2 col-md-8">
       <a href="index.php">Voltar</a></div>
     <div class="col-md-offset-2 col-md-8">
-      <form action="scripts/cad_colaboradores.php" method="post">
+      <form action="scripts/cadastros.php" method="post">
           <div class="form-group col-md-12">
                   <label for="nome">Nome:</label>
                   <input type="text" class="form-control text-uppercase"  id="nome" name="nome" placeholder="" required>
@@ -117,7 +117,7 @@
               <input type="text" class="form-control text-uppercase" id="estado" name="estado" placeholder="" required="">
           </div>
           <div class="form-group">
-                 <input style="background: pink; color: #fff" type="submit" name="submit" class="btn btn-block" value="Salvar" >
+                 <input style="background: pink; color: #fff" type="submit" name="cad_colaborador" class="btn btn-block" value="Salvar" >
               
           </div>
       </form>

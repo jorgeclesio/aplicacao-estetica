@@ -14,7 +14,7 @@ if($_SERVER['SERVER_NAME'] == 'localhost' || $_SERVER['SERVER_NAME'] == '127.0.0
 //CONSTANTES QUE DEFINEM A CONEXAO NA WEB
 elseif($_SERVER['SERVER_NAME'] == '31.170.166.99' || $_SERVER['SERVER_NAME'] == 'u728216278'){
 	define('DB_HOST' , 'mysql.hostinger.com.br',true);
-	define('DB_USER' , 'u728216278_estet',true);
+	define('DB_USER' , 'u728216278',true);
 	define('DB_PASS' , 'Controle1',true);
 	define('DB_BASE' , 'u728216278_estet',true);
 }

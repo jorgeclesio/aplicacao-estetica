@@ -11,6 +11,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="google-site-verification" content="8wPWvRE7psOApt4vrgpqR1CqRLoYnX_Q7r_UHB_Ftxo" />
         <title>Izabelita Medeiros Estética</title>
          <!-- Bootstrap -->
         <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -63,24 +64,40 @@
 <br><br>
    <div class="principal">
     <div class="row">
+       
         <div class="col-md-offset-2 col-md-8">
-            <div class="col-md-6"><button class="btn btn-block" style="box-shadow: 1px 1px 2px">
-                <a href="agenda.php">Lista de Agendamentos</a></button>
+            <div class="col-md-6"><a href="agenda.php"><button class="btn btn-block" style="box-shadow: 1px 1px 2px">
+                Lista de Agendamentos</button></a>
             </div>
             <div class="col-md-6">
-                <button class="btn btn-block" style="box-shadow: 1px 1px 2px"><a style="display: block;" href="comanda.php">Comanda/vendas</a></button>
+                <a style="display: block;" href="comanda.php">
+                    <button class="btn btn-block" style="box-shadow: 1px 1px 2px">Comanda/vendas</button>
+                </a>
             </div>
             <div class="col-md-6">
-                <button class="btn btn-block" style="box-shadow: 1px 1px 2px"><a style="display: block;" href="clientes.php">Cadastro de Clientes</a></button>
+                <a style="display: block;" href="clientes.php">
+                    <button class="btn btn-block" style="box-shadow: 1px 1px 2px">Cadastro de Clientes</button>
+                </a>
             </div>
             <div class="col-md-6">
-                <button class="btn btn-block" style="box-shadow: 1px 1px 2px"><a style="display: block;" href="produtos.php">Cadastro de Produtos</a></button>
+                <a style="display: block;" href="produtos.php">
+                    <button class="btn btn-block" style="box-shadow: 1px 1px 2px">Cadastro de Produtos</button>
+                </a>
             </div>
             <div class="col-md-6">
-                <button class="btn btn-block" style="box-shadow: 1px 1px 2px"><a style="display: block;" href="servicos.php">Cadastro de Serviços</a></button>
+                <a style="display: block;" href="servicos.php">
+                    <button class="btn btn-block" style="box-shadow: 1px 1px 2px">Cadastro de Serviços</button>
+                </a>
             </div>
             <div class="col-md-6">
-                <button class="btn btn-block" style="box-shadow: 1px 1px 2px"><a style="display: block;" href="colaboradores.php">Cadastro de Colaboradores</a></button>
+                <a style="display: none;" href="colaboradores.php">
+                    <button class="btn btn-block" style="box-shadow: 1px 1px 2px">Cadastro de Colaboradores</button>
+                </a>
+            </div>
+            <div class="col-md-6">
+                <a style="display: block;" href="colaboradores.php">
+                    <button class="btn btn-block" style="box-shadow: 1px 1px 2px">Relatórios</button>
+                </a>
             </div>
         </div>
     </div>   

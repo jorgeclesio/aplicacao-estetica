@@ -5,7 +5,7 @@ include '../conexao.php';
 /////////////CADASTRO DE CLIENTES////////////////////////////////
 if (isset($_POST['cad_cliente'])) {
 
-	$nome        = mysqli_real_escape_string($conexao, $_POST['nome']);
+	$nome        = mysqli_real_escape_string($conexao, strtoupper($_POST['nome']));
 	$telefone    = mysqli_real_escape_string($conexao, $_POST['telefone']);
 	$cpf         = mysqli_real_escape_string($conexao, $_POST['cpf']);
 	$aniversario = mysqli_real_escape_string($conexao, $_POST['aniversario']);

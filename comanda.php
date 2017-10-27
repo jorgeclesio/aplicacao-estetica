@@ -1,4 +1,5 @@
 <?php
+session_start();
     include "conexao.php";
 
 ?>
@@ -16,6 +17,7 @@
         <link href="css/style.css" rel="stylesheet">
         <link href="js/jquery-ui.min.css" rel="stylesheet">
         <link rel="icon" type="image/jpeg" href="img/favicon.ico" />
+        <link rel="stylesheet" href="css/font-awesome.min.css">
         <script src="js/jquery-3.2.1.min.js" type="text/javascript"></script>
         <script src="js/bootstrap.min.js" type="text/javascript"></script>
         <script src="ajax/cad_clientes.js"></script>
@@ -28,7 +30,9 @@
             filter: alpha(opacity=50); /* For IE8 and earlier */
         }
         button a{font-size: 1.2em}
-
+        tr.item:hover{
+          background: pink
+        }
     body {color: gray;
     background: url(img/bg.jpg) no-repeat center top fixed;
                 -webkit-background-size: cover;
@@ -87,23 +91,29 @@
                       $sql_comanda = 'select * from comanda c inner join serv_comanda s on c.id_comanda = s.id_com where c.status="Aberta" group by c.id_comanda   order by c.id_comanda desc   ';
                       $exec_comanda = mysqli_query($conexao, $sql_comanda);
 
-                      while ($linha = mysqli_fetch_array($exec_comanda)) {?>
+          while ($linha = mysqli_fetch_array($exec_comanda)) {?>
                     <div class="row" style="border: 1px solid #FFC0CB; border-radius: 3px;background: #fff;margin-bottom: 10px; padding: 5px">
-                        <div class="col-md-12 text-left"><span class="text-left">Comanda: <?php $id_com = $linha['id_comanda']; echo $id_com ."<br>"; ?></span> 
+                        <div class="col-md-12 text-left">
+                          <span class="text-left">Comanda: 
+                            <?php 
+                                $id_com = $linha['id_comanda'];
+                                echo $id_com ."<br>"; 
+                                ?>
+                          </span> 
                         </div>
-                        <div class="text-center">Izabelita Medeiros Estetica</div>
-                        <div class="text-center">CNPJ: 000.000.000/0001-00</div>
+                        <div class="text-center"><h3>Izabelita Medeiros Estetica</h3></div>
+                        <div class="text-center">CNPJ: 28.770.243/0001-28</div>
                             <hr>
                         <div>
                       
-                            <div class="col-md-6"> Cliente: <strong>
+                            <div class="col-md-6"> Cliente: <h4>
                             <?php  
                               $id_cli = $linha['id_cliente'];
                               $sql_cliente = "select * from clientes where idclientes = $id_cli";
                               $exec_cliente = mysqli_query($conexao, $sql_cliente);
                               $cliente = mysqli_fetch_array($exec_cliente);
                                 echo strtoupper($cliente['cli_nome'])."<br>"; 
-                              ?> </strong>
+                              ?> </h4>
                             </div>
 
                             <div class="col-md-6 text-right"> Id Col.: 
@@ -116,37 +126,54 @@
                               ?> 
                             </div>
                         
-                        <table class="table">
+                        <table class="table table-hover">
                           <thead>
                             <tr>
                               <th> - </th>
                               <th>Serviços</th>
                               <th>valor</th>
+                              <th></th>
                             </tr>
-                          </thead>
+                          </thead><a href=""></a>
 
                           <?php 
-                      $serv_comanda = "SELECT servicos.serv_nome as nome, servicos.serv_valor as total  FROM comanda 
+                      $serv_comanda = "SELECT servicos.serv_nome as nome, servicos.serv_valor as valor, serv_comanda.id_com as id_da_comanda, serv_comanda.id    FROM comanda 
                                         join servicos 
                                         join serv_comanda 
                                   on comanda.id_comanda = serv_comanda.id_com and serv_comanda.id_servico = servicos.id
                                         WHERE id_com = $id_com order by comanda.id_comanda desc";
                       $exec_serv_comanda = mysqli_query($conexao, $serv_comanda);
-                      $servico =  mysqli_fetch_array($exec_serv_comanda);
-       
-                                echo "<tr>
-                                        <td>1</td>
-                                        <td>".$servico['nome']."</td>
-                                        <td>".$servico['total']."</td>
-                                      </tr>";
-                      
+                      $num = mysqli_num_rows($exec_serv_comanda);
+ 
+
+                      while ($servico =  mysqli_fetch_array($exec_serv_comanda)) { ?>
+                        
+                        <tr class="item">
+                          <td></td>
+                          <td><?php echo $servico["nome"]?></td>
+                          <td><?php echo "R$ " .  number_format($servico["valor"], 2, ',', '.')?></td>
+                          <td>
+                            <a href='scripts/editar_comanda.php?id=<?php echo $servico["id"]?>' onClick="return confirm('Tem certeza que quer excluir este serviço?')" title='<?php echo $servico["id"]?>'>
+                              <i class="fa fa-trash" aria-hidden="true"></i>
+                            </a>
+                          </td>
+                        </tr>';
+                                                           
+                      <?php }
+              
                       ?>
 
                         </table>
 
                       <div class="col-md-12 text-right"><strong> Total: 
-                     
-                         <?php    echo 'R$  ' . number_format($linha['total'], 2, ',', '.')."<br>";; ?> </strong>
+                           <?php     
+                                $sum = 0;
+                                  foreach ($exec_serv_comanda as $value){
+                                      $sum += $value['valor'];
+                                  }
+                              echo 'R$  ' . number_format($sum, 2, ',', '.')."<br>";
+                            ?>  
+                            </strong>
                       </div>
 
                       
@@ -155,7 +182,7 @@
                         </div>   
                     
                         <div> 
-                              <button type="button" style="margin: 5px;" class="btn btn-sm btn-success" data-toggle="modal" data-target="#myModal">PAGAR
+                              <button type="button" id="" style="margin: 5px;"  class="btn btn-sm btn-success" data-toggle="modal" data-target="#myModal">PAGAR
                               </button>
 
                               <button type="button" style="margin: 5px;" class="btn btn-sm btn-warning" data-toggle="modal" data-target="#myModal">EDITAR
@@ -194,6 +221,7 @@
               <div class="col-md-8 text-right"></div><div class="col-md-4 text-right">Comanda N. <b>
                 <?php 
                   echo $id_com; 
+                  
                 ?></b>
               </div>
               

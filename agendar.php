@@ -4,11 +4,11 @@ include 'conexao.php';
 
 if (isset($_POST['submit'])) {
 	
-	$nome    = $_POST['nome'] ;
-	$data    = $_POST['data'];
-	$servico = $_POST['servico'];
-	$hora    = $_POST['hora'];
-	$status  = "Agendado";
+	$nome    = mysqli_real_escape_string($conexao,strtoupper($_POST['nome'])) ;
+	$data    = mysqli_real_escape_string($conexao,$_POST['data']);
+	$servico = mysqli_real_escape_string($conexao,$_POST['servico']);
+	$hora    = mysqli_real_escape_string($conexao,$_POST['hora']);
+	$status  = mysqli_real_escape_string($conexao,"Agendado");
 	$nome    = $nome . "  -  " . $servico;
 	$start    = $data ." " . $hora;
 	$duracao = $_POST['duracao'];

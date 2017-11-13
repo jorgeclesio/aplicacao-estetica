@@ -82,10 +82,12 @@
 
    <div class="row">
         <div class="col-md-offset-2 col-md-8">
-        <div class="form-group col-md-offset-9 col-md-3">
+        
+        <div class="form-group col-md-offset-9  col-md-3">
                 <label for=""></label>
                 <a href="clientes.php" style="text-decoration: none"><input type="text" class="btn btn-block form-control text-center" value="Novo Cliente"></a>
-          </div>
+        </div>
+
     <form action="scripts/cad_comanda.php" method="post">
       
         <input type="hidden" name="id_comanda" value="<?php 
@@ -101,6 +103,7 @@
               }
 
         ?>">
+
         <div class="row">
           <div class="form-group col-md-8">
                   <label for="nome">Nome:</label>

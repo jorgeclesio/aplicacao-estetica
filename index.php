@@ -95,7 +95,7 @@
                 </a>
             </div>
             <div class="col-md-6">
-                <a style="display: block;" href="colaboradores.php">
+                <a style="display: block;" href="relatorios.php">
                     <button class="btn btn-block" style="box-shadow: 1px 1px 2px">Relatórios</button>
                 </a>
             </div>

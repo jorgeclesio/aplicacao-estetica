@@ -9,14 +9,22 @@ include '../conexao.php';
 		$servico      = $_POST['servico'];
 		$colaborador  = $_POST['colaboradores'];
 		
+
+
+		$cliente = mysqli_query($conexao, "select * from clientes where cli_nome = '$cli_nome' ");
+		$linha = mysqli_fetch_assoc($cliente);
+
+		$id_cliente = $linha['idclientes'];
+
 	
+
+
 	//INSERÇÃO NA TABELA COMANDA
+		$cad_comanda = mysqli_query($conexao, "INSERT INTO comanda (id_cliente,id_colaborador,data) 
+	              VALUES ('$id_cliente','$colaborador','$data') " );
+		
 
-		$cad_comanda = "INSERT INTO comanda (id_cliente, id_colaborador, data) 
-	              VALUES ('$cli_nome','$colaborador','$data')";
-	    $exec_cad_comanda = mysqli_query($conexao, $cad_comanda);
-
-	    if (!$exec_cad_comanda) {
+	    if (!$cad_comanda) {
 	    	echo "erro ao cadastrar comanda";
 	    }
 
@@ -24,18 +32,17 @@ include '../conexao.php';
 	
 	//INSERÇÃO NA TABELA SERV_COMANDA
 
-	    $cad_servcomanda = "INSERT INTO serv_comanda (id_com, id_servico)  VALUES ('$id_comanda','$servico')";
-	    $exec_cad_servcomanda = mysqli_query($conexao, $cad_servcomanda);
+		$servico = mysqli_query($conexao, "INSERT INTO serv_comanda (id_com,id_servico) VALUES ('$id_comanda','$servico')");
 
-	    if (!$exec_cad_servcomanda) {
+	    if (!$servico) {
 	    	echo "erro ao cadastrar no serv_comanda";
 	    }
 
 
 	
  
-	  echo "<script> alert('Cadastro realizado');</script>";
-      echo "<SCRIPT> location.href='../comanda.php' </SCRIPT>"; 
+	 echo "<script> alert('Cadastro realizado');</script>";
+     echo "<SCRIPT> location.href='../comanda.php' </SCRIPT>"; 
 
 	
 }else{

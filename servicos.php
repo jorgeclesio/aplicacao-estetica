@@ -15,7 +15,7 @@
          <!-- Bootstrap -->
             <link href="css/bootstrap.min.css" rel="stylesheet">
         <!-- Bootstrap -->
-            <link href="css/style.css" rel="stylesheet">
+            
             <link href="js/jquery-ui.min.css" rel="stylesheet">
             <link rel="icon" type="image/jpeg" href="img/favicon.ico" />
         <!-- JS -->
@@ -38,6 +38,7 @@
             }
     a{color: blue; text-decoration: none}
     a:hover{color: #fff;text-decoration: none;}
+    label{color:#4E2E53;}
 
    </style>
 
@@ -47,7 +48,7 @@
 
 <div class="container-fluid">
    <div class="row" style="background: pink; ">
-        <div class="row" style="background: pink">
+        <div class="row" style="background: pink; padding: 10px">
             <div col class="col-md-offset-2 col-md-8 text-center" style="background: pink; ">
                 <div>
                       <a href="index.php"><img src="img/logo_pq.png" alt=""></a>
@@ -58,7 +59,7 @@
    
 <br><br>
    <div class="principal">
-      <h1 class="text-center" style="margin-top: 0;padding-top: 0;;color: #888">Cadastro de Serviços</h1>
+      <h1 class="text-center" style="margin-top: 0;padding-top: 0;;color: #B55178">Cadastro de Serviços</h1>
         <p class="text-center text-danger">
             <?php if($_SESSION['status'] != "logado"){
                 echo "voce precisa estar esta logado";
@@ -69,23 +70,23 @@
 
     <div class="row">
     <div class="text-right col-md-offset-2 col-md-8">
-      <a href="index.php">Voltar</a></div>
+      <a href="index.php" style="color:#B55178;">Voltar</a></div>
     <div class="col-md-offset-2 col-md-8">
       <form action="scripts/cadastros.php" method="post">
           <div class="form-group col-md-9">
-                  <label for="nome">Nome do Serviço:</label>
+                  <label for="nome" style="color:#B55178;">Nome do Serviço:</label>
                   <input type="text" class="form-control text-uppercase"  id="nome" name="nome" placeholder="" autofocus="" required>
           </div>
 
           <div class="form-group col-md-3">
-              <label for="preco">Preço Unitário:</label>
+              <label for="preco" style="color:#B55178;">Preço Unitário:</label>
               <input type="number" class="form-control" id="preco" name="preco" placeholder="R$" required=" ">
           </div>
 
           
 
           <div class="form-group">
-              <input style="background: pink;color: #fff" type="submit" name="cad_servico" class="btn btn-block" value="Salvar" >
+              <input style="background: pink;color: #B55178" type="submit" name="cad_servico" class="btn btn-block" value="Salvar" >
               
           </div>
       </form>

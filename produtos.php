@@ -36,7 +36,7 @@
     <body>
 
 <div class="container-fluid">
-   <div class="row" style="background: pink">
+   <div class="row" style="background: pink; padding: 10px">
         <div col class="col-md-offset-2 col-md-8 text-center" style="background: pink; ">
             <div>
                   <a href="index.php"><img src="img/logo_pq.png" alt=""></a>
@@ -45,7 +45,7 @@
     </div>
 <br><br>
    <div class="principal">
-      <h1 class="text-center" style="margin-top: 0;padding-top: 0;;color: #888">Cadastro de Produtos</h1>
+      <h1 class="text-center" style="margin-top: 0;padding-top: 0;;color: #B55178">Cadastro de Produtos</h1>
 
         <p class="text-center text-danger">
             <?php if($_SESSION['status'] != "logado"){
@@ -57,38 +57,38 @@
 
     <div class="row">
     <div class="text-right col-md-offset-2 col-md-8">
-      <a href="index.php">Voltar</a></div>
+      <a href="index.php" style="color:#B55178;">Voltar</a></div>
     <div class="col-md-offset-2 col-md-8">
       <form action="scripts/cadastros.php" method="post">
           <div class="form-group col-md-12">
-                  <label for="nome">Nome:</label>
+                  <label for="nome" style="color:#B55178;">Nome:</label>
                   <input type="text" class="form-control text-uppercase"  id="nome" name="nome" placeholder="" autofocus="" required>
           </div>
 
           <div class="form-group col-md-12">
-              <label for="descricao">Descrição:</label>
+              <label for="descricao" style="color:#B55178;">Descrição:</label>
               <textarea rows="4" cols="50" class="form-control" id="descricao" name="descricao" placeholder=""></textarea>
           </div>
           
           <div class="form-group col-md-4">
-              <label for="p_custo">Preço de Custo:</label>
+              <label for="p_custo" style="color:#B55178;">Preço de Custo:</label>
               <input type="number" class="form-control" id="p_custo" name="p_custo" placeholder="R$ " required="">
           </div>
 
 
           <div class="form-group col-md-4">
-              <label for="number">Preco  de Venda:</label>
+              <label for="number" style="color:#B55178;">Preco  de Venda:</label>
               <input type="text" class="form-control" id="p_venda" name="p_venda" placeholder="R$ " required="">
           </div>
 
           <div class="form-group col-md-4">
-              <label for="estoque">Estoque:</label>
+              <label for="estoque" style="color:#B55178;">Estoque:</label>
               <input type="number" class="form-control" id="estoque" name="estoque" placeholder="" required="">
           </div>
 
           
           <div class="form-group">
-                 <input style="background: pink; color: gray" type="submit" name="cad_produto" class="btn btn-block" value="Salvar" >
+                 <input style="background: pink; color: #B55178" type="submit" name="cad_produto" class="btn btn-block" value="Salvar" >
               
           </div>
       </form>

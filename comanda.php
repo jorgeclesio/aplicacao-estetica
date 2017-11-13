@@ -31,7 +31,7 @@ session_start();
         }
         button a{font-size: 1.2em}
         tr.item:hover{
-          background: pink
+          background: #FEF4EB
         }
     body {color: gray;
     background: url(img/bg.jpg) no-repeat center top fixed;
@@ -54,7 +54,7 @@ session_start();
 
 
 <div class="container-fluid fundo">
-  <div class="row" style="background: pink">
+  <div class="row" style="background: pink; padding:  10px">
       <div col class="col-md-offset-2 col-md-8 text-center" style="background: pink; ">
           <div>
               <a href="index.php"><img src="img/logo_pq.png" alt=""></a>
@@ -63,36 +63,39 @@ session_start();
   </div>
    
 <br><br>
-  <div class="principal container">
-         <h1 class="text-center" style="margin-top: 0;padding-top: 0;;color: #888">Comanda</h1>
-    <div class="row">
-        <div class="col-md-offset-3 col-md-6">
-            
-
-<!-- ################ Nova Comanda ################ -->
-            <div class="col-md-6">
-                  <br>
-                <a style="background: pink;margin-bottom:  0" href="abrir_comanda.php" class="btn btn-block">
-                    <span  class="glyphicon glyphicon-plus">&nbsp  Nova Comanda</span> 
-                </a>
-            </div>
-
-            <br><br><br>
+<div class="principal container">
+         
+  <div class="row">
+    <div class="col-md-offset-3 col-md-6">
+ <!-- ################ Nova Comanda ################ -->
+     <!--   <div class="col-md-6" ></div> -->
+        <div class="col-md-12">
+            <a style="background: pink;margin-bottom:  0" href="abrir_comanda.php" class="btn btn-block">
+                <span><i class="fa fa-plus" aria-hidden="true"></i>  Nova Comanda</span> 
+            </a>
+        </div>
+       
+        <br><br>
 			
 
     	       <div class="tab-content">
 
     <!-- ################Lista as Comandas com Status "Aberta"################ -->
     		    <div id="aberta" class="tab-pane fade in active">
-    			       <h3>Comandas Abertas</h3>
+    			    
                 <div>
 
                   <?php 
                       $sql_comanda = 'select * from comanda c inner join serv_comanda s on c.id_comanda = s.id_com where c.status="Aberta" group by c.id_comanda   order by c.id_comanda desc   ';
                       $exec_comanda = mysqli_query($conexao, $sql_comanda);
-
+                      $num_com = mysqli_num_rows($exec_comanda);
+                      if ($num_com < 1) {
+                          echo '
+                                <img style="height:300px; margin-top:20px" src="img/logo.png" alt="">
+                          ';
+                      }
           while ($linha = mysqli_fetch_array($exec_comanda)) {?>
-                    <div class="row" style="border: 1px solid #FFC0CB; border-radius: 3px;background: #fff;margin-bottom: 10px; padding: 5px">
+                    <div class="row" style="border: 1px solid #FFDCC6; border-radius: 3px;background: #fff;margin-bottom: 10px; padding: 5px">
                         <div class="col-md-12 text-left">
                           <span class="text-left">Comanda: 
                             <?php 
@@ -126,7 +129,7 @@ session_start();
                               ?> 
                             </div>
                         
-                        <table class="table table-hover">
+                        <table class="table ">
                           <thead>
                             <tr>
                               <th> - </th>
@@ -134,7 +137,7 @@ session_start();
                               <th>valor</th>
                               <th></th>
                             </tr>
-                          </thead><a href=""></a>
+                          </thead>
 
                           <?php 
                       $serv_comanda = "SELECT servicos.serv_nome as nome, servicos.serv_valor as valor, serv_comanda.id_com as id_da_comanda, serv_comanda.id    FROM comanda 
@@ -149,11 +152,11 @@ session_start();
                       while ($servico =  mysqli_fetch_array($exec_serv_comanda)) { ?>
                         
                         <tr class="item">
-                          <td></td>
+                          <td><input type="hidden" id="id" value="<?php $id_c =  $servico['id_da_comanda']; echo $id_c;?>" name=""></td>
                           <td><?php echo $servico["nome"]?></td>
                           <td><?php echo "R$ " .  number_format($servico["valor"], 2, ',', '.')?></td>
                           <td>
-                            <a href='scripts/editar_comanda.php?id=<?php echo $servico["id"]?>' onClick="return confirm('Tem certeza que quer excluir este serviço?')" title='<?php echo $servico["id"]?>'>
+                            <a href='scripts/editar_comanda.php?acao=apagar&id=<?php echo $servico["id"]?>' onClick="return confirm('Tem certeza que quer excluir este serviço?')" title='<?php echo $servico["id"]?>'>
                               <i class="fa fa-trash" aria-hidden="true"></i>
                             </a>
                           </td>
@@ -166,13 +169,15 @@ session_start();
                         </table>
 
                       <div class="col-md-12 text-right"><strong> Total: 
+                           <input style="background: #fff; border:none" type="text" name="total" disabled value='
                            <?php     
                                 $sum = 0;
                                   foreach ($exec_serv_comanda as $value){
                                       $sum += $value['valor'];
                                   }
-                              echo 'R$  ' . number_format($sum, 2, ',', '.')."<br>";
-                            ?>  
+                                      echo 'R$  ' . number_format($sum, 2, ',', '.');
+                            ?> '>
+                            
                             </strong>
                       </div>
 
@@ -182,11 +187,10 @@ session_start();
                         </div>   
                     
                         <div> 
-                              <button type="button" id="" style="margin: 5px;"  class="btn btn-sm btn-success" data-toggle="modal" data-target="#myModal">PAGAR
-                              </button>
+                              <a class="btn btn-sm btn-success" style="margin: 5px" href='concluir_comanda.php?acao=pagar&tot=<?php echo $sum ?>&id=<?php echo $id_c; ?>'>PAGAR</a>
+                              
+                              <a class="btn btn-sm btn-warning" style="margin: 5px" href='scripts/editar_comanda.php?acao=editar&id=<?php echo $id_c; ?>'>EDITAR</a>
 
-                              <button type="button" style="margin: 5px;" class="btn btn-sm btn-warning" data-toggle="modal" data-target="#myModal">EDITAR
-                              </button>
                         </div> 
                     </div>
                           
@@ -202,72 +206,7 @@ session_start();
 		      </div>
       </div>
 
-  <!-- ################MODAL DE PAGAMENTOS################ -->
-    <div class="container">
-  
-  
-   <!-- Modal -->
-  <div class="modal fade" style="background: " id="myModal" role="dialog">
-    <div class="modal-dialog">
-    
-      <!-- Modal conteudo-->
-      <div  style="background: #FFEFD5;" class="modal-content">
-        <div class="modal-header" style="background: pink; color: #fff">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h3 class="modal-title text-center">PAGAMENTO</h3>
-        </div>
-        <div  class="modal-body">
-          <form action="">
-              <div class="col-md-8 text-right"></div><div class="col-md-4 text-right">Comanda N. <b>
-                <?php 
-                  echo $id_com; 
-                  
-                ?></b>
-              </div>
-              
-              <hr>
-                            
-              <div class="col-md-6"></div>
-              <div></div><hr>
-              
-              <div class="form-group col-md-6">
-                <label for="dinheiro"><span>Dinheiro</span></label>
-                <input id="input-dinheiro" class="form-control" type="number" autofocus="" placeholder="R$ ">
-              </div>
-
-              <div class="form-group col-md-2">
-                <label for="cartao"></label>
-                <select class="btn" name="parc" id="parc">
-                  <option value="1">1x</option>
-                  <option value="2">2x</option>
-                  <option value="3">3x</option>
-                </select>
-              </div>
-              <div class="form-group col-md-4">
-                <label for="cartao">Cartão:</label>
-                <input class="form-control" type="number" placeholder="R$ ">
-              </div>
-              <div class="col-md-6"><label for="total">Valor a Pagar:</label>
-                  <input class="form-control" type="text" readonly=""  value="<?php echo 'R$ '.number_format($total, 2, ',', '.');  ?>">
-              </div>
-              <div class="col-md-6"><label for="cartao">Troco:</label>
-                    <input class="form-control" type="text" readonly="">
-              </div>
-                <br><br><br>
-              
-          </form>
-          <hr>
-        </div>
-        <div class="col-md-6" style="margin-top: 10px"></div>
-        <div class="modal-footer ">
-          <button type="button" class="btn btn-block" style="background: pink;color: #fff" data-dismiss="modal">Concluir Pagamento</button>
-        </div>
-      </div>
-      
-    </div>
-  </div>
-  
-</div>
+ 
    
 </div>
 

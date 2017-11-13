@@ -39,7 +39,7 @@
 
 <div class="container-fluid">
    <div class="row" style="background: pink">
-       <div col class="col-md-offset-2 col-md-8 text-center" style="background: pink; ">
+       <div col class="col-md-offset-2 col-md-8 text-center" style="background: pink; padding: 10px">
             <div>
                   <a href="index.php"><img src="img/logo_pq.png" alt=""></a>
             </div>
@@ -47,7 +47,7 @@
    </div>
 <br><br>
    <div class="principal">
-    <h1 class="text-center" style="margin-top: 0;padding-top: 0;;color: #888">Cadastro de Clientes</h1>
+    <h1 class="text-center" style="margin-top: 0;padding-top: 0;color: #B55178">Cadastro de Clientes</h1>
         <p class="text-center text-danger">
             <?php if($_SESSION['status'] != "logado"){
                 echo "voce precisa estar esta logado";
@@ -58,37 +58,37 @@
       
     <div class="row">
     <div class="text-right col-md-offset-2 col-md-8">
-      <a href="index.php">Voltar</a></div>
+      <a href="index.php" style="color:#B55178;">Voltar</a></div>
     <div class="col-md-offset-2 col-md-8 ">
       <form action="scripts/cadastros.php" method="post">
           <div class="form-group col-md-12 ">
-                  <label for="nome">Nome:</label>
+                  <label for="nome" style="color:#B55178;">Nome:</label>
                   <input type="text" class="form-control text-uppercase"  id="nome" name="nome" placeholder="" autofocus="" required>
           </div>
 
           <div class="form-group col-md-4">
-              <label for="telefone">Telefone:</label>
+              <label for="telefone" style="color:#B55178;">Telefone:</label>
               <input type="tel" class="form-control" id="telefone" name="telefone" placeholder="" required="">
           </div>
 
           <div class="form-group col-md-4">
-              <label for="cpf">CPF:</label>
+              <label for="cpf" style="color:#B55178;">CPF:</label>
               <input type="text" class="form-control" id="cpf" name="cpf" placeholder="" >
           </div>
 
 
           <div class="form-group col-md-4">
-              <label for="aniversario">Aniversário:</label>
+              <label for="aniversario" style="color:#B55178;">Aniversário:</label>
               <input type="date" class="form-control" id="aniversario" name="aniversario" placeholder="" >
           </div>
 
           <div class="form-group col-md-9">
-              <label for="email">Email:</label>
+              <label for="email" style="color:#B55178;">Email:</label>
               <input type="email" class="form-control" id="email" name="email" placeholder="" >
           </div>
 
           <div class="form-group col-md-3">
-                <label for="equipe">Sexo:</label>
+                <label for="equipe" style="color:#B55178;">Sexo:</label>
                 <select class="form-control" name="sexo" id="sexo" required>
                     <option value="feminino">Feminino</option>
                     <option value="masculino">Masculino</option>
@@ -97,26 +97,26 @@
             </div>
 
           <div class="form-group col-md-12">
-              <label for="endereco">Endereço:</label>
+              <label for="endereco" style="color:#B55178;">Endereço:</label>
               <input type="text" class="form-control text-uppercase" id="endereco" name="endereco" placeholder="" >
           </div>
 
           <div class="form-group col-md-5">
-              <label for="bairro">Bairro:</label>
+              <label for="bairro" style="color:#B55178;">Bairro:</label>
               <input type="text" class="form-control text-uppercase" id="bairro" name="bairro" placeholder="" >
           </div>
 
           <div class="form-group col-md-5">
-              <label for="cidade">Cidade:</label>
+              <label for="cidade" style="color:#B55178;">Cidade:</label>
               <input type="text" class="form-control text-uppercase" id="cidade" name="cidade" placeholder="" >
           </div>
 
           <div class="form-group col-md-2">
-              <label for="estado">Estado:</label>
+              <label for="estado" style="color:#B55178;">Estado:</label>
               <input type="text" class="form-control text-uppercase" id="estado" name="estado" placeholder="" >
           </div>
-          <div class="form-group">
-                 <input style="background: pink; color: #fff" type="submit" name="cad_cliente" class="btn btn-block" value="Salvar" >
+          <div class="form-group" style="color:#B55178;">
+                 <input style="background: pink; color: #B55178" type="submit" name="cad_cliente" class="btn btn-block" value="Salvar" >
               
           </div>
       </form>

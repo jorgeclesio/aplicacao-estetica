@@ -28,8 +28,7 @@ function consulta_banco($query){
     global $conexao;
     $resultado = mysqli_query($conexao,$query);
     return $resultado;
-    
-}
+ }
 //CONFIGURACOES GERAIS
 date_default_timezone_set('America/Belem');
 
